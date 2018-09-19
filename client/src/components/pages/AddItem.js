@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 // import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import api from '../../api';
-// import './AddCountry.css';
+// import './AddItem.css';
 
 
-class AddCountry extends Component {
+class AddItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: "",
-      capitals: "",
-      area: "",
-      description: "",
-      message: null
+      tags: "",
+      category: {},
+      season: "",
+      color: "null",
+      boughtOn: "",
+      price: 0,
+      wornOn: ""
+
     }
   }
 
@@ -25,22 +29,30 @@ class AddCountry extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    console.log(this.state.name, this.state.description)
+    console.log(this.state.name, this.state.tags)
     let data = {
       name: this.state.name,
-      capitals: this.state.capitals,
-      area: this.state.area,
-      description: this.state.description,
+      tags: this.state.tags,
+      category: this.state.category,
+      season: this.state.season,
+      color: this.state.color,
+      boughtOn: this.state.boughtOn,
+      price: this.state.price,
+      wornOn: this.state.wornOn
     }
-    api.postCountries(data)
+    api.postItems(data)
       .then(result => {
         console.log('SUCCESS!')
         this.setState({
           name: "",
-          capitals: "",
-          area: "",
-          description: "",
-          message: `Your country '${this.state.name}' has been created`
+          tags: "",
+          category: "",
+          season: "",
+          color: "",
+          boughtOn: "",
+          price: "",
+          wornOn: "",
+          message: `Your item '${this.state.name}' has been created`
         })
         setTimeout(() => {
           this.setState({
@@ -54,14 +66,14 @@ class AddCountry extends Component {
   }
   render() {
     return (
-      <div className="AddCountry">
-        <h2>Add country</h2>
+      <div className="AddItem">
+        <h2>Add item</h2>
         <form>
           Name: <input type="text" value={this.state.name} onChange={(e) => { this.handleInputChange("name", e) }} /> <br />
-          Capitals: <input type="text" value={this.state.capitals} onChange={(e) => { this.handleInputChange("capitals", e) }} /> <br />
-          Area: <input type="number" value={this.state.area} onChange={(e) => { this.handleInputChange("area", e) }} /> <br />
+          tags: <input type="text" value={this.state.tags} onChange={(e) => { this.handleInputChange("tags", e) }} /> <br />
+          category: <input type="number" value={this.state.category} onChange={(e) => { this.handleInputChange("category", e) }} /> <br />
           Description: <textarea value={this.state.description} cols="30" rows="10" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
-          <button onClick={(e) => this.handleClick(e)}>Create country</button>
+          <button onClick={(e) => this.handleClick(e)}>Create item</button>
         </form>
         <div style={{
           margin: 10,
@@ -75,4 +87,4 @@ class AddCountry extends Component {
   }
 }
 
-export default AddCountry;
+export default AddItem;

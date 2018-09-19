@@ -13,19 +13,19 @@ const errHandler = err => {
 export default {
   service: service,
 
-  getItems() {
+  getCloset() {
     return service
-      .get('/item')
+      .get('/closet')
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  // postCountries(data) {
-  //   return service
-  //     .post('/countries', data)
-  //     .then(res => res.data)
-  //     .catch(errHandler);
-  // },
+  postCloset(data) {
+    return service
+      .post('/closet', data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
 
   getProfile() {
     return service
