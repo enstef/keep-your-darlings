@@ -27,24 +27,24 @@ export default {
       .catch(errHandler);
   },
 
-  getSecret() {
+  getProfile() {
     return service
-      .get('/secret')
+      .get('/profile')
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  signup(userInfo) {
+  signup(email, password) {
     return service
-      .post('/signup', userInfo)
+      .post('/signup', {email, password})
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  login(username, password) {
+  login(email, password) {
     return service
       .post('/login', {
-        username,
+        email,
         password,
       })
       .then(res => {

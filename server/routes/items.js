@@ -12,8 +12,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  let { ... } = req.body
-  Item.create({ ... })
+  let { } = req.body
+  Item.create({  })
     .then(item => {
       res.json({
         success: true,
