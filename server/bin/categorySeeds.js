@@ -15,9 +15,46 @@ mongoose
 let categories = [
   {
     name: "clothing",
-    subcategories: ["",]
+    subcategories: ["jacket", "coat", "cardigan", "pullover","sweater", "t-shirt", "blouse", "dress", "skirt", "overall", "shirttop", "pants", "jeans", "shorts",  ]
   },
+  {
+    name: "shoes",
+    subcategories: ["sneakers", "espandrilles", "kneehighboots", "mules", "loafers", "boots", "pumps", "highheels", "ankleboots", "chelseaboots", "brougues", "sandals", "flats", "slippers", "laceups", "wedges", "ballerinas"]
+  },
+  {
+    name: "special",
+    subcategories: ["swimwear", "sportswear", "lingerie", "costumes", "formalwear", "other"]
+  },
+  {
+    name: "accessoires",
+    subcategories: ["necklace", "ring", "hat", "sunglasses", "watch", "gloves", "scarf", "belt", "jewelry", "bracelet"]
+  },
+  {
+    name: "bags",
+    subcategories: ["fannypack", "tote", "messenger", "backpack", "satchel", "bucketbag", "clutch", "duffelbag", "shoulderbag", "weekender", "handbag", "laptopbag", "beachbag", "drawstringbag"]
+  }
 ]
+
+
+
+/*
+let categories = [
+  {
+    name: "clothing",
+    subcategories: ["jacket", "coat", "cardigan", "pullover","sweater", "t-shirt", "blouse", "dress", "skirt", "overall", "shirttop", "pants", "jeans", "shorts",  ]
+  },
+  {
+    name: "shoes",
+    subcategories: ["sneakers", "espandrilles", "kneehighboots", "mules", "loafers", "boots", "pumps", "highheels", "ankleboots", "chelseaboots", "brougues", "sandals", "flats", "slippers", "laceups", "wedges", "ballerinas"]
+  },
+  {
+    name: "special",
+    subcategories: ["swimwear", "sportswear", "lingerie", "costumes", "formalwear", "other"]
+  }
+]
+*/
+
+
 
 Category.create(categories)
 .then(categoriesCreated => {
@@ -31,54 +68,3 @@ Category.create(categories)
   throw err
 })
 
-
-// subcatergory: 
-//   tops: {
-//     type: boolean,
-//     specific: {
-//       jacket: boolean,
-//       blazer: boolean,
-//       pullover: boolean,
-//       shirt: boolean,
-//       top: boolean,
-//     }
-//   },
-//   pants: {
-//     jeans: boolean,
-//     capris: boolean,
-//     shorts: boolean,
-//     leggins: boolean,
-//     skirt: boolean,
-//   },
-//   dress: boolean,
-//   overall: boolean,
-//   lingerie: boolean,
-//   active: {
-//     swimwear: boolean,
-//     sportswear: boolean,
-//   }
-// }
-// },
-// shoes = {
-// type: boolean,
-// required: true,
-// kind: {
-//   sneakers: boolean,
-//   espandrilles: boolean,
-//   kneehighboots: boolean,
-//   mules: boolean,
-//   loafers: boolean,
-//   boots: boolean,
-//   pumps: boolean,
-//   highheels: boolean,
-//   ankleboots: boolean,
-//   chelseaboots: boolean,
-//   brougues: boolean,
-//   sandals: boolean,
-//   flats: boolean,
-//   slippers: boolean,
-//   laceups: boolean,
-//   wedges: boolean,
-//   ballerinas: boolean,
-// }
-// },

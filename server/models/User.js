@@ -1,13 +1,13 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const validateEmail(email) => {
-  const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-  return re.test(email)
-}
-const validatePassword(password) => {
-  if (password.length >= 8) password
-}
+// const validateEmail(email) => {
+//   const re = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+//   return re.test(email)
+// }
+// const validatePassword(password) => {
+//   if (password.length >= 8) password
+// }
 
 const userSchema = new Schema({
   email: {
