@@ -6,7 +6,7 @@ const itemSchema = new Schema({
     type: String,
     required: true
   },
-  tags: String,
+  tags: [String],
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
