@@ -30,8 +30,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Set the public folder to "~/client/build/"
-// Example: http://localhost:5000/favicon.ico => Display "~/client/build/favicon.ico"
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Enable authentication using session + passport
@@ -46,7 +44,7 @@ require('./passport')(app);
 
 app.use('/api', require('./routes/index'));
 app.use('/api', require('./routes/auth'));
-app.use('/api/countries', require('./routes/countries'));
+app.use('/api/items', require('./routes/items'));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use('/api/*', (req, res, next) => {
