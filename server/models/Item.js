@@ -21,7 +21,8 @@ const itemSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required:true
-  }
+  },
+  pictureUrl: String
 })
 
 const Item = mongoose.model("Item", itemSchema)

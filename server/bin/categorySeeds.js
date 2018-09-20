@@ -5,7 +5,7 @@ const Category = require("../models/Category");
 const bcryptSalt = 10;
 
 mongoose
-  .connect("mongodb://localhost/keep-your-darlings", {useNewUrlParser: true})
+  .connect("mongodb://localhost/kyd", {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
