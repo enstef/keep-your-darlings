@@ -33,6 +33,19 @@ export default {
       .then(res => res.data)
       .catch(errHandler);
   },
+  addPicture(file) {
+    const formData = new FormData();
+    formData.append("picture", file)
+    console.log('DEBUG formData', formData.get("picture"));
+    return service
+      .post('/users/first-user/pictures', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then(res => res.data)
+      .catch(errHandler);
+  },
 
   signup(email, password) {
     return service
@@ -75,19 +88,5 @@ export default {
 
   isLoggedIn() {
     return localStorage.getItem('user') != null
-  },
-
-
-  addPicture(file) {
-    const formData = new FormData();
-    formData.append("picture", file)
-    return service
-      .post('/users/first-user/pictures', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then(res => res.data)
-      .catch(errHandler);
-  },
+  }
 };
