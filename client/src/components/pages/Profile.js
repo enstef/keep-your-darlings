@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-// import { Route, Switch, NavLink, Link } from 'react-router-dom';
-// import api from '../api';
-// import './Sample.css';
+import { Link } from 'react-router-dom';
+// import api from '../../api';
 
-class Sample extends Component {
+class Profile extends Component {
   // constructor(props) {
   //   super(props)
   //   this.state = {
   //   }
   // }
+
   render() {                
     return (
-      <div className="Sample">
-        Hello Sample
+      <div className="Profile">
+        <h1>Usernames Profile</h1>
+        <p>Neat welcome message</p>
+        <p>Statistics</p>
+        <Link to="/ootd">OOTD</Link> <br/>
+        <Link to="/closet">Closet</Link>
       </div>
     );
   }
 }
 
-export default Sample;
+export default Profile;

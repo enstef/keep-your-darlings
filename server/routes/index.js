@@ -10,10 +10,4 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
   res.json(req.user)
 })
 
-router.get("/closet", isLoggedIn, (req, res, next) => {
-  res.json(req.users)
-})
-
-
-
 module.exports = router

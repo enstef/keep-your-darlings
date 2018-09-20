@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import api from '../../api';
 
+import ItemCard from "./ItemCard"
+
 class Closet extends Component {
   constructor(props) {
     super(props)
@@ -21,8 +23,10 @@ class Closet extends Component {
   render() {
     return (
       <div className="Closet">
-        <h2>List of items</h2>
-        {this.state.items.map((c, i) => <li key={i}>{c.name}</li>)}
+        <h2>My Closet</h2>
+        {this.state.items.map((item, i) => 
+          <ItemCard key={i} item={item} />
+        )}
       </div>
     );
   }

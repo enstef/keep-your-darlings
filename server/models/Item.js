@@ -9,8 +9,7 @@ const itemSchema = new Schema({
   tags: [String],
   _category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
-    required: true
+    ref: "Category"
   },
   season: [String],
   color: [String],
@@ -22,7 +21,10 @@ const itemSchema = new Schema({
     ref: "User",
     required:true
   },
-  pictureUrl: String
+  pictureUrl: {
+    type: String,
+    // required: true
+  }
 })
 
 const Item = mongoose.model("Item", itemSchema)
