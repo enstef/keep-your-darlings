@@ -43,28 +43,9 @@ export default {
         localStorage.removeItem('user');
       })
   },
-
-  isLoggedIn() {
-    return localStorage.getItem('user') != null
-  },
-
-
   getProfile() {
     return service
       .get('/profile')
-      .then(res => res.data)
-      .catch(errHandler);
-  },
-  addPicture(file) {
-    const formData = new FormData();
-    formData.append("picture", file)
-    console.log('DEBUG formData', formData.get("picture"));
-    return service
-      .post('/users/first-user/pictures', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
       .then(res => res.data)
       .catch(errHandler);
   },
