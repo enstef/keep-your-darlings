@@ -9,7 +9,7 @@ class Closet extends Component {
     }
   }
   componentDidMount() {
-    api.getItems()
+    api.getCloset()
       .then(items => {
         console.log(items)
         this.setState({
@@ -21,7 +21,7 @@ class Closet extends Component {
   render() {
     return (
       <div className="Closet">
-        <h2>List of closet-items</h2>
+        <h2>List of items</h2>
         {this.state.items.map((c, i) => <li key={i}>{c.name}</li>)}
       </div>
     );
