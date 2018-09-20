@@ -48,76 +48,39 @@ export default {
     return localStorage.getItem('user') != null
   },
 
-
   getProfile() {
     return service
       .get('/profile')
       .then(res => res.data)
       .catch(errHandler);
   },
-  addPicture(file) {
-    const formData = new FormData();
-    formData.append("picture", file)
-    console.log('DEBUG formData', formData.get("picture"));
-    return service
-      .post('/users/first-user/pictures', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then(res => res.data)
-      .catch(errHandler);
-  },
 
   getCloset() {
     return service
-      .get('/profile/closet')
+      .get('/closet/')
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  getItem(data) {
+  getItem() {
     return service
-      .get('/profile/closet/item/:id')
+      .get('/closet/item/:id')
       .then(res => res.data)
       .catch(errHandler);
   },
 
   postItem(data) {
     return service
-      .post("/profile/closet/item/", data)
+      .post("/closet/item", data)
       .then(res => res.data)
       .catch(errHandler)
   },
 
-
-
-  // loadUser() {
-  //   const userData = localStorage.getItem('user');
-  //   if (!userData) return false;
-  //   const user = JSON.parse(userData);
-  //   if (user.token) {
-  //     axios.defaults.headers.common['Authorization'] = 'Bearer ' + user.token;
-  //     return user;
-  //   }
-  //   return false;
-  // },
-
-  addPicture(file) {
-    const formData = new FormData();
-    formData.append("picture", file)
+  getCategories() {
     return service
-      .post('/users/first-user/pictures', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      .get('/closet/categories')
       .then(res => res.data)
       .catch(errHandler);
   },
-
-  isLoggedIn() {
-    return localStorage.getItem('user') != null
-  }
 
 };

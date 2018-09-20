@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-// import { Route, Switch, NavLink, Link } from 'react-router-dom';
-import api from '../../api';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import api from '../../api'
+
 // import './AddItem.css';
 
 class AddItem extends Component {
@@ -9,94 +10,119 @@ class AddItem extends Component {
     this.state = {
       name: "",
       tags: "",
-      category: {},
-      season: "",
-      color: "null",
+      _category: "",
+      season: [],
+      color: [],
       boughtOn: "",
-      price: 0,
-      wornOn: "",
-      file: null
-
+      price: "",
+      pictureUrl: "",
+      categories: []
     }
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFileUpload = this.handleFileUpload.bind(this)
   }
-  handleChange(e) {
-    console.log('handleChange');
+
+  handleFileUpload(e) {
     console.log('DEBUG e.target.files[0]', e.target.files[0]);
     this.setState({
-      file: e.target.files[0]
+      picture: e.target.files[0]
     })
   }
+
+  handleInputChange(e) {
+    console.log(e.target.value)
+    console.log(this.state._category.name)
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  
+  handleButtonClick(e, category) {
+    e.preventDefault()
+    this.setState({
+      _category: category
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
-    api.addPicture(this.state.file)
-  }
-  handleInputChange(stateFieldName, event) {
-    let newState = {}
-    newState[stateFieldName] = event.target.value
 
-    this.setState(newState)
-  }
-  handleClick(e) {
-    e.preventDefault()
-    console.log(this.state.name, this.state.tags)
     let data = {
       name: this.state.name,
       tags: this.state.tags,
-      category: this.state.category,
+      _category: this.state._category._id,
       season: this.state.season,
       color: this.state.color,
       boughtOn: this.state.boughtOn,
       price: this.state.price,
-      wornOn: this.state.wornOn
+      pictureUrl: this.state.pictureUrl
     }
-    api.postItems(data)
+
+    api.postItem(data)
       .then(result => {
         console.log('SUCCESS!')
-        this.setState({
-          name: "",
-          tags: "",
-          category: "",
-          season: "",
-          color: "",
-          boughtOn: "",
-          price: "",
-          wornOn: "",
-          message: `Your item '${this.state.name}' has been created`
-        })
-        setTimeout(() => {
-          this.setState({
-            message: null
+        this.props.history.push("/closet")
+          .catch(err => {
+            console.log('ERROR')
           })
-        }, 2000)
-      })
-      .catch(err => {
-        console.log('ERROR')
       })
   }
+
   render() {
     return (
-      <div className="AddItem">  
-        <h2>Add item</h2>
-       <form onSubmit={(e)=>this.handleSubmit(e)}>
-          <input type="file" onChange={(e)=>this.handleChange(e)} /> <br/>
-          <button type="submit">Save new profile picture</button>
+      <div className="AddItem">
+        <Link to="/closet">Back</Link>
+        <h1>Add Item</h1>
+
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+
+          <input type="file" name="picture" onChange={this.handleFileUpload} /> <br />
+
+          Name:
+          <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} required={true} /> <br />
+          Tags:
+          <textarea name="tags" value={this.state.tags} cols="30" rows="5" onChange={this.handleInputChange} /> <br />
+
+          Category:
+          <div>
+            {this.state.categories.map((category, i) => (
+              <button onClick={e => this.handleButtonClick(e, category)} key={i}>{category.name}</button>
+            ))}
+          </div>
+          <br />
+
+          {this.state._category &&
+            <div>
+              <p>Subcategories:</p>
+              {this.state._category.subcategories.map((subcategory, i) => (
+                <button key={i}>{subcategory}</button>
+              ))}
+            </div>
+          }
+
+          Bought On:
+          <input type="date" name="boughtOn" value={this.state.boughtOn} onChange={this.handleInputChange} /> <br />
+          Price:
+          <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange} /> <br />
+
+          <button type="submit">Add New Item</button>
         </form>
-        <form>
-          Name: <input type="text" value={this.state.name} onChange={(e) => { this.handleInputChange("name", e) }} /> <br />
-          tags: <input type="text" value={this.state.tags} onChange={(e) => { this.handleInputChange("tags", e) }} /> <br />
-          category: <input type="number" value={this.state.category} onChange={(e) => { this.handleInputChange("category", e) }} /> <br />
-          Description: <textarea value={this.state.description} cols="30" rows="10" onChange={(e) => { this.handleInputChange("description", e) }} ></textarea> <br />
-          <button onClick={(e) => this.handleClick(e)}>Create item</button>
-        </form>
-        <div style={{
-          margin: 10,
-          backgroundColor: "red",
-          display: this.state.message ? "block" : "none"
-        }}>
-          {this.state.message}
-        </div>
+
       </div>
     );
+  }
+
+  componentDidMount() {
+    api.getCategories()
+      .then(categories => {
+        console.log(categories)
+        this.setState({
+
+          categories: categories
+        })
+      })
+      .catch(err => console.log(err))
   }
 }
 export default AddItem;
