@@ -1,10 +1,11 @@
+require('dotenv').config();
 const mongoose = require("mongoose");
 const Category = require("../models/Category");
 
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/server', {useNewUrlParser: true})
+  .connect("mongodb://localhost/keep-your-darlings", {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

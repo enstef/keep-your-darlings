@@ -7,7 +7,7 @@ const itemSchema = new Schema({
     required: true
   },
   tags: [String],
-  category: {
+  _category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
     required: true
@@ -16,7 +16,12 @@ const itemSchema = new Schema({
   color: [String],
   bougthOn: Date,
   price: Number,
-  wornOn: [Date]
+  wornOn: [Date],
+  _owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required:true
+  }
 })
 
 const Item = mongoose.model("Item", itemSchema)

@@ -42,9 +42,9 @@ app.use(session({
 require('./passport')(app);
 
 
-app.use('/api', require('./routes/index'));
+app.use('/api', require('./routes/profile'));
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/items', require('./routes/items'));
+app.use('/api/profile', require('./routes/profile'));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use('/api/*', (req, res, next) => {
