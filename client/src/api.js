@@ -13,19 +13,41 @@ const errHandler = err => {
 export default {
   service: service,
 
-  getCloset() {
+  signup(email, password) {
     return service
-      .get('/closet')
+      .post('/auth/signup', {
+        email,
+        password
+      })
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  postCloset(data) {
+  login(email, password) {
     return service
-      .post('/closet', data)
-      .then(res => res.data)
+      .post('/auth/login', {
+        email,
+        password,
+      })
+      .then(res => {
+        localStorage.setItem('user', JSON.stringify(res.data));
+        return res.data;
+      })
       .catch(errHandler);
   },
+
+  logout() {
+    return service
+      .get('/auth/logout')
+      .then(res => {
+        localStorage.removeItem('user');
+      })
+  },
+
+  isLoggedIn() {
+    return localStorage.getItem('user') != null
+  },
+
 
   getProfile() {
     return service
@@ -47,33 +69,28 @@ export default {
       .catch(errHandler);
   },
 
-  signup(email, password) {
+  getCloset() {
     return service
-      .post('/signup', {email, password})
+      .get('/profile/closet')
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  login(email, password) {
+  getItem(data) {
     return service
-      .post('/login', {
-        email,
-        password,
-      })
-      .then(res => {
-        localStorage.setItem('user', JSON.stringify(res.data));
-        return res.data;
-      })
+      .get('/profile/closet/item/:id')
+      .then(res => res.data)
       .catch(errHandler);
   },
 
-  logout() {
+  postItem(data) {
     return service
-      .get('/logout')
-      .then(res => {
-        localStorage.removeItem('user');
-      })
+      .post("/profile/closet/item/", data)
+      .then(res => res.data)
+      .catch(errHandler)
   },
+
+
 
   // loadUser() {
   //   const userData = localStorage.getItem('user');
@@ -86,7 +103,21 @@ export default {
   //   return false;
   // },
 
+  addPicture(file) {
+    const formData = new FormData();
+    formData.append("picture", file)
+    return service
+      .post('/users/first-user/pictures', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
   isLoggedIn() {
     return localStorage.getItem('user') != null
   }
+
 };
