@@ -17,7 +17,6 @@ const storage = cloudinaryStorage({
 
 const parser = multer({ storage });
 
-
 router.get("/", isLoggedIn, (req, res, next) => {
   Item.find({_owner: req.user._id})
   .then(items => {
@@ -29,9 +28,8 @@ router.get("/", isLoggedIn, (req, res, next) => {
 router.post('/add-item', isLoggedIn, parser.single('picture'),(req, res, next) => {
   let _owner = req.user._id
   let pictureUrl = req.file.secure_url
-  console.log(req.file.secure_url)
-  let { name, tags, _category, color, boughtOn, price, wornOn } = req.body
-  Item.create({ name, tags, _category, color, boughtOn, price, wornOn, pictureUrl, _owner })
+  let { _category, subcategory, season, color, tags, brand, boughtOn, price, wornOn } = req.body
+  Item.create({ _category, subcategory, season, color, tags, brand, boughtOn, price, wornOn, _owner, pictureUrl })
     .then(item => {
       res.json({
         success: true,
