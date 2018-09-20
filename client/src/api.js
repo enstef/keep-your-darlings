@@ -13,37 +13,19 @@ const errHandler = err => {
 export default {
   service: service,
 
-  getCloset() {
-    return service
-      .get('/closet')
-      .then(res => res.data)
-      .catch(errHandler);
-  },
-
-  postCloset(data) {
-    return service
-      .post('/closet', data)
-      .then(res => res.data)
-      .catch(errHandler);
-  },
-
-  getProfile() {
-    return service
-      .get('/profile')
-      .then(res => res.data)
-      .catch(errHandler);
-  },
-
   signup(email, password) {
     return service
-      .post('/signup', {email, password})
+      .post('/auth/signup', {
+        email,
+        password
+      })
       .then(res => res.data)
       .catch(errHandler);
   },
 
   login(email, password) {
     return service
-      .post('/login', {
+      .post('/auth/login', {
         email,
         password,
       })
@@ -56,11 +38,46 @@ export default {
 
   logout() {
     return service
-      .get('/logout')
+      .get('/auth/logout')
       .then(res => {
         localStorage.removeItem('user');
       })
   },
+
+  isLoggedIn() {
+    return localStorage.getItem('user') != null
+  },
+
+
+  getProfile() {
+    return service
+      .get('/profile')
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  getCloset() {
+    return service
+      .get('/profile/closet')
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  getItem(data) {
+    return service
+      .get('/profile/closet/item/:id')
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  postItem(data) {
+    return service
+      .post("/profile/closet/item/", data)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
+
 
   // loadUser() {
   //   const userData = localStorage.getItem('user');
@@ -72,11 +89,6 @@ export default {
   //   }
   //   return false;
   // },
-
-  isLoggedIn() {
-    return localStorage.getItem('user') != null
-  },
-
 
   addPicture(file) {
     const formData = new FormData();

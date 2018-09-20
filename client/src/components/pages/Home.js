@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 class Home extends Component {
   // constructor(props) {
   //   super(props)
   //   this.state = {
   //   }
   // }
-  render() {                
+  render() {
     return (
       <div className="Home">
-        <h2>Home</h2>
-        <p>This is a sample project with the MERN stack</p>
+        <h2>Keep Your Darlings</h2>
+        <p>We want to help you get organized and save money and stuff</p>
+        <p>Not yet a member?</p>
+        <Link to="/Signup">Signup</Link>
       </div>
     );
   }
