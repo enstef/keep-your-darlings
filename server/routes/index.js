@@ -1,11 +1,19 @@
 const express = require("express")
-const router = express.Router()
 const { isLoggedIn } = require("../middlewares")
-
-const Item = require("../models/Item")
+const router = express.Router()
 
 router.get("/"), (req, res, next) => {
- //landing redirect to profile 
+  
 }
+
+router.get("/profile", isLoggedIn, (req, res, next) => {
+  res.json(req.user)
+})
+
+router.get("/closet", isLoggedIn, (req, res, next) => {
+  res.json(req.users)
+})
+
+
 
 module.exports = router

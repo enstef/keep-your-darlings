@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import api from '../../api';
 // import './AddItem.css';
 
-
 class AddItem extends Component {
   constructor(props) {
     super(props)
@@ -15,18 +14,28 @@ class AddItem extends Component {
       color: "null",
       boughtOn: "",
       price: 0,
-      wornOn: ""
+      wornOn: "",
+      file: null
 
     }
   }
-
+  handleChange(e) {
+    console.log('handleChange');
+    console.log('DEBUG e.target.files[0]', e.target.files[0]);
+    this.setState({
+      file: e.target.files[0]
+    })
+  }
+  handleSubmit(e) {
+    e.preventDefault()
+    api.addPicture(this.state.file)
+  }
   handleInputChange(stateFieldName, event) {
     let newState = {}
     newState[stateFieldName] = event.target.value
 
     this.setState(newState)
   }
-
   handleClick(e) {
     e.preventDefault()
     console.log(this.state.name, this.state.tags)
@@ -66,8 +75,12 @@ class AddItem extends Component {
   }
   render() {
     return (
-      <div className="AddItem">
+      <div className="AddItem">  
         <h2>Add item</h2>
+       <form onSubmit={(e)=>this.handleSubmit(e)}>
+          <input type="file" onChange={(e)=>this.handleChange(e)} /> <br/>
+          <button type="submit">Save new profile picture</button>
+        </form>
         <form>
           Name: <input type="text" value={this.state.name} onChange={(e) => { this.handleInputChange("name", e) }} /> <br />
           tags: <input type="text" value={this.state.tags} onChange={(e) => { this.handleInputChange("tags", e) }} /> <br />
@@ -86,5 +99,4 @@ class AddItem extends Component {
     );
   }
 }
-
 export default AddItem;
