@@ -57,7 +57,7 @@ export default {
 
   getCloset() {
     return service
-      .get('/closet/')
+      .get('/closet')
       .then(res => res.data)
       .catch(errHandler);
   },
@@ -71,7 +71,7 @@ export default {
 
   postItem(data) {
     return service
-      .post("/closet/item", data)
+      .post("/closet/add-item", data)
       .then(res => res.data)
       .catch(errHandler)
   },
