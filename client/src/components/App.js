@@ -9,6 +9,7 @@ import Signup from './pages/Signup';
 import api from '../api';
 import logo from '../logo.svg';
 import './App.css';
+//import { Navbar, Button } from 'reactstrap'; //<Button color="danger">Danger!</Button>
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Keep your darlings</h1>
-          <Link to="/">Home</Link>
+          <Link to="/">Home/Landingpage</Link>
           <Link to="/closet">Countries</Link>
           <Link to="/add-item">Add item</Link>
           {!api.isLoggedIn() && <Link to="/signup">Signup</Link>}

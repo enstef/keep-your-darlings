@@ -4,7 +4,7 @@ const Item = require('../models/Item')
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  Item.find()
+  Items.find()
     .then(items => {
       res.json(items);
     })
