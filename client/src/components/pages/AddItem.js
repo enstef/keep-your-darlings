@@ -81,14 +81,16 @@ class AddItem extends Component {
     api.postItem(data)
       .then(result => {
         console.log('SUCCESS!')
-        this.props.history.push("/closet")
-          .catch(err => {
-            console.log('ERROR')
-          })
+        // this.props.history.push("/closet")
+        //   .catch(err => {
+        //     console.log('ERROR')
+        //   })
       })
   }
 
   render() {
+    const seasons = ["spring", "summer", "autmn", "winter"]
+    const colors = ["black", "white", "grey", "mixed", "red", "pink", "yellow", "blue", "green", "brown", "metallic"]
     return (
       <div className="AddItem">
         <Link to="/closet">Back</Link>
@@ -116,25 +118,16 @@ class AddItem extends Component {
 
           Season:
           <div>
-            <button onClick={e => this.handleSeasonClick(e, "spring")} className={this.state.season === "spring" ? "active" : "spring"}>spring</button>
-            <button onClick={e => this.handleSeasonClick(e, "summer")} className={this.state.season === "summer" ? "active" : "summer"}>summer</button>
-            <button onClick={e => this.handleSeasonClick(e, "autumn")} className={this.state.season === "autumn" ? "active" : "autumn"}>autumn</button>
-            <button onClick={e => this.handleSeasonClick(e, "winter")} className={this.state.season === "winter" ? "active" : "winter"}>winter</button>
+          {seasons.map((season, i) => (
+              <button onClick={e => this.handleSeasonClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
+            ))}
           </div>
 
           Colors:
           <div>
-            <button onClick={e => this.handleColorClick(e, "black")} className={this.state.color === "black" ? "active" : "black"}>black</button>
-            <button onClick={e => this.handleColorClick(e, "white")} className={this.state.color === "white" ? "active" : "white"}>white</button>
-            <button onClick={e => this.handleColorClick(e, "grey")} className={this.state.color === "grey" ? "active" : "grey"}>grey</button>
-            <button onClick={e => this.handleColorClick(e, "mixed")} className={this.state.color === "mixed" ? "active" : "mixed"}>mixed</button>
-            <button onClick={e => this.handleColorClick(e, "red")} className={this.state.color === "red" ? "active" : "red"}>red</button>
-            <button onClick={e => this.handleColorClick(e, "pink")} className={this.state.color === "pink" ? "active" : "pink"}>pink</button>
-            <button onClick={e => this.handleColorClick(e, "yellow")} className={this.state.color === "yellow" ? "active" : "yellow"}>yellow</button>
-            <button onClick={e => this.handleColorClick(e, "blue")} className={this.state.color === "blue" ? "active" : "blue"}>blue</button>
-            <button onClick={e => this.handleColorClick(e, "green")} className={this.state.color === "green" ? "active" : "green"}>green</button>
-            <button onClick={e => this.handleColorClick(e, "brown")} className={this.state.color === "brown" ? "active" : "brown"}>brown</button>
-            <button onClick={e => this.handleColorClick(e, "metallic")} className={this.state.color === "metallic" ? "active" : "metallic"}>metallic</button>
+          {colors.map((color, i) => (
+              <button onClick={e => this.handleColorClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
+            ))}
           </div>
 
           Tags:

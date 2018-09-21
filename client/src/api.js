@@ -70,8 +70,19 @@ export default {
   },
 
   postItem(data) {
+    let formData = new FormData();
+    formData.append("picture", data.picture)
+    formData.append("_category", data._category)
+    formData.append("subcategory", data.subcategory)
+    formData.append("season", data.season)
+    formData.append("color", data.color)
+    formData.append("tags", data.tags)
+    formData.append("brand", data.brand)
+    formData.append("bougthOn", data.bougthOn)
+    formData.append("price", data.price)
+    
     return service
-      .post("/closet/add-item", data)
+      .post("/closet/add-item", formData)
       .then(res => res.data)
       .catch(errHandler)
   },
