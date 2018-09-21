@@ -9,6 +9,7 @@ import api from '../api';
 import logo from '../logo.svg';
 
 import './App.css';
+import ItemDetail from './pages/ItemDetail';
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends Component {
           <Route path="/closet" component={Closet} />
           <Route path="/add-item" component={AddItem} />
           <Route path="/signin" component={Signin} />
+          <Route path="/item/:id" component={ItemDetail} />
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </div>
@@ -51,3 +53,18 @@ class App extends Component {
 }
 
 export default App;
+
+
+/*
+
+import { Redirect } from 'react-router'
+
+<Route exact path="/" render={() => (
+  loggedIn ? (
+    <Redirect to="/closet"/>
+  ) : (
+    <Home/>
+  )
+)}/>
+
+*/

@@ -62,9 +62,9 @@ export default {
       .catch(errHandler);
   },
 
-  getItem() {
+  getItem(id) {
     return service
-      .get('/closet/item/:id')
+      .get('/closet/item/'+ id)
       .then(res => res.data)
       .catch(errHandler);
   },
