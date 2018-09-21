@@ -57,14 +57,24 @@ export default {
 
   getCloset() {
     return service
-      .get('/closet')
+      .get('/closet/items')
       .then(res => res.data)
       .catch(errHandler);
   },
 
+  filterCloset(search) {
+    console.log("filterCloset")
+    return service
+      .post("/closet/items", {
+        textsearch: search
+      })
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   getItem(id) {
     return service
-      .get('/closet/item/' + id)
+      .get('/closet/items/'+ id)
       .then(res => res.data)
       .catch(errHandler);
   },
@@ -82,7 +92,7 @@ export default {
     formData.append("price", data.price)
 
     return service
-      .post("/closet/add-item", formData)
+      .post("/closet/items", formData)
       .then(res => res.data)
       .catch(errHandler)
   },
