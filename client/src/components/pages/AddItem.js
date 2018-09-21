@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import api from '../../api'
+import api from '../../api';
+import {
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,
+} from 'reactstrap';
 
 import './AddItem.css';
 
@@ -17,33 +22,37 @@ class AddItem extends Component {
       brand: "",
       bougthOn: "",
       price: "",
+      _id: "",
 
       categories: []
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
+    //this.routeChange = this.routeChange.bind(this)
   }
+  // routeChange() {
+  //   // let path = `/item/:id`;
+  //   // let path = `/closet/item/` + id;
+  //   // let path = `/item/${this.props.match.params.id}`;
 
+  // }
   handleFileUpload(e) {
     this.setState({
       picture: e.target.files[0]
     })
   }
-
   handleInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
-
   handleCategoryClick(e, category) {
     e.preventDefault()
     this.setState({
       _category: category
     })
   }
-
   handleSubClick(e, subcategory) {
     e.preventDefault()
     this.setState({
@@ -62,7 +71,6 @@ class AddItem extends Component {
       season: season
     })
   }
-
   handleSubmit(e) {
     e.preventDefault()
 
@@ -81,11 +89,11 @@ class AddItem extends Component {
     api.postItem(data)
       .then(result => {
         console.log('SUCCESS!')
-        // this.props.history.push("/closet")
-        //   .catch(err => {
-        //     console.log('ERROR')
-        //   })
+        console.log('RESULT -->', result)
+        let path = `/item/${result.item._id}`
+        this.props.history.push(path)
       })
+      .catch(err => console.log('ERROR', err))
   }
 
   render() {
@@ -118,14 +126,14 @@ class AddItem extends Component {
 
           Season:
           <div>
-          {seasons.map((season, i) => (
+            {seasons.map((season, i) => (
               <button onClick={e => this.handleSeasonClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
             ))}
           </div>
 
           Colors:
           <div>
-          {colors.map((color, i) => (
+            {colors.map((color, i) => (
               <button onClick={e => this.handleColorClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
             ))}
           </div>
@@ -141,7 +149,7 @@ class AddItem extends Component {
           Price:
           <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange} /> <br />
 
-          <button type="submit">Add New Item</button>
+          <Button color="primary" className="" type="submit" >Add New Item</Button>
         </form>
 
       </div>
