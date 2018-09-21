@@ -8,6 +8,8 @@ class AddItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      categories: [],
+      //
       picture: "",
       _category: "",
       subcategory: "",
@@ -17,8 +19,6 @@ class AddItem extends Component {
       brand: "",
       bougthOn: "",
       price: "",
-
-      categories: []
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -37,30 +37,25 @@ class AddItem extends Component {
     })
   }
 
-  handleCategoryClick(e, category) {
+  handleRequiredClick(e, category) {
     e.preventDefault()
     this.setState({
       _category: category
     })
   }
 
-  handleSubClick(e, subcategory) {
+  handleOptionalClick(e, value) {
     e.preventDefault()
-    this.setState({
-      subcategory: subcategory
-    })
-  }
-  handleColorClick(e, color) {
-    e.preventDefault()
-    this.setState({
-      color: color
-    })
-  }
-  handleSeasonClick(e, season) {
-    e.preventDefault()
-    this.setState({
-      season: season
-    })
+    if (this.state[e.target.name] === value) {
+      this.setState({
+        [e.target.name]: ""
+      })
+    }
+    else {
+      this.setState({
+        [e.target.name]: value
+      })
+    }
   }
 
   handleSubmit(e) {
@@ -89,8 +84,8 @@ class AddItem extends Component {
   }
 
   render() {
-    const seasons = ["spring", "summer", "autmn", "winter"]
-    const colors = ["black", "white", "grey", "mixed", "red", "pink", "yellow", "blue", "green", "brown", "metallic"]
+    const seasons = ["Spring", "Summer", "Autmn", "Winter"]
+    const colors = ["Black", "White", "Grey", "Red", "Pink", "Yellow", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     return (
       <div className="AddItem">
         <Link to="/closet">Back</Link>
@@ -103,7 +98,7 @@ class AddItem extends Component {
           Category:
           <div>
             {this.state.categories.map((category, i) => (
-              <button onClick={e => this.handleCategoryClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
+              <button onClick={e => this.handleRequiredClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
             ))}
           </div>
           <br />
@@ -111,22 +106,22 @@ class AddItem extends Component {
           {this.state._category &&
             <div>
               {this.state._category.subcategories.map((subcategory, i) => (
-                <button onClick={e => this.handleSubClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
+                <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
               ))}
             </div>
           }
 
           Season:
           <div>
-          {seasons.map((season, i) => (
-              <button onClick={e => this.handleSeasonClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
+            {seasons.map((season, i) => (
+              <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
             ))}
           </div>
 
           Colors:
           <div>
-          {colors.map((color, i) => (
-              <button onClick={e => this.handleColorClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
+            {colors.map((color, i) => (
+              <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
             ))}
           </div>
 
@@ -151,9 +146,7 @@ class AddItem extends Component {
   componentDidMount() {
     api.getCategories()
       .then(categories => {
-        console.log(categories)
         this.setState({
-
           categories: categories
         })
       })
