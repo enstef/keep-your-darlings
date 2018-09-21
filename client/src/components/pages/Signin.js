@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import api from '../../api';
-import {
-  Container, Col, Form,
-  FormGroup, Label, Input,
-  Button,
-} from 'reactstrap';
+// import {
+//   Container, Col, Form,
+//   FormGroup, Label, Input,
+//   Button,
+// } from 'reactstrap';
 
 class Signin extends Component {
   constructor(props) {
