@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import api from '../../api'
+import api from '../../api';
+import {
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,
+} from 'reactstrap';
 
 import './AddItem.css';
 
@@ -19,18 +24,24 @@ class AddItem extends Component {
       brand: "",
       bougthOn: "",
       price: "",
+      _id: "",
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
+    //this.routeChange = this.routeChange.bind(this)
   }
+  // routeChange() {
+  //   // let path = `/item/:id`;
+  //   // let path = `/closet/item/` + id;
+  //   // let path = `/item/${this.props.match.params.id}`;
 
+  // }
   handleFileUpload(e) {
     this.setState({
       picture: e.target.files[0]
     })
   }
-
   handleInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -57,7 +68,6 @@ class AddItem extends Component {
       })
     }
   }
-
   handleSubmit(e) {
     e.preventDefault()
 
@@ -76,11 +86,11 @@ class AddItem extends Component {
     api.postItem(data)
       .then(result => {
         console.log('SUCCESS!')
-        // this.props.history.push("/closet")
-        //   .catch(err => {
-        //     console.log('ERROR')
-        //   })
+        console.log('RESULT -->', result)
+        let path = `/item/${result.item._id}`
+        this.props.history.push(path)
       })
+      .catch(err => console.log('ERROR', err))
   }
 
   render() {
@@ -136,7 +146,7 @@ class AddItem extends Component {
           Price:
           <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange} /> <br />
 
-          <button type="submit">Add New Item</button>
+          <Button color="primary" className="" type="submit" >Add New Item</Button>
         </form>
 
       </div>

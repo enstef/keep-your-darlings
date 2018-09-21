@@ -90,12 +90,29 @@ export default {
     formData.append("brand", data.brand)
     formData.append("bougthOn", data.bougthOn)
     formData.append("price", data.price)
-    
+
     return service
       .post("/closet/items", formData)
       .then(res => res.data)
       .catch(errHandler)
   },
+
+  /*
+  router.delete("/item/:_id", isLoggedIn, (req, res, next) => {
+    Item.findOneAndRemove({_id: req.params._id})
+    res.json({message: "Item removed"})
+  })
+  
+  */
+
+  // deleteItem(data) {
+  //   const data = data.filter(i => i.id !== item.id)
+  //   this.setState({ data })
+  //   return service
+  //     .get('/closet')
+  //     .then(res => res.data)
+  //     .catch(errHandler);
+  // }
 
   getCategories() {
     return service

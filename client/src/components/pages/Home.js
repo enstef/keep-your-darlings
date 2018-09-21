@@ -12,7 +12,7 @@ class Home extends Component {
         <h2>Keep Your Darlings</h2>
         <p>We want to help you get organized and save money and stuff</p>
         <p>Not yet a member?</p>
-        <Link to="/Signup">Signup</Link>
+        <Link to="/Signup">Start</Link>
       </div>
     );
   }

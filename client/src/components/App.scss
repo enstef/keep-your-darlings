@@ -1,5 +1,6 @@
 /* App.scss */
-@import url("https://fonts.googleapis.com/css?family=Gravitas+One");
+@import url('https://fonts.googleapis.com/css?family=Gravitas+One');
+
 .App {
   text-align: center;
 }
@@ -18,7 +19,7 @@
 
 .App-title {
   font-size: 1.5em;
-  font-family: "Gravitas One", cursive;
+  font-family: 'Gravitas One', cursive;
 }
 
 .App-intro {
@@ -29,15 +30,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+
+$milk-white: #bdc3c7;
+$grass-green: rgb(66, 155, 19);
+
 .App-header {
-  background-color: #429b13;
+  background-color: $grass-green;
   height: 150px;
   padding: 20px;
-  color: #bdc3c7;
+  color: $milk-white;
 }
-
-/*# sourceMappingURL=App.css.map */
