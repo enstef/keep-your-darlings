@@ -1,0 +1,164 @@
+// Your new color: here the primary color is a dark blue
+$primary: rgb(151, 151, 245);
+// $secondary
+// $success
+// $info
+// $warning
+// $danger
+// $light
+// $dark
+
+@import 'bootstrap/scss/bootstrap';
+
+//--------------Fancy--------------
+.active {
+  color: red;
+}
+
+//--------------General--------------
+.onepage {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.closeter {
+  position: fixed;
+  bottom: 5vw;
+  right: 5vw;
+  z-index: 1;
+}
+//--------------App--------------
+@keyframes slideIn {
+  from {margin-left: 0;}
+  to {margin-left: -50vw}
+}
+@keyframes slideOut {
+  from {margin-left: -50vw}
+  to {margin-left: 0;}
+}
+
+.slideIn {
+  animation: slideIn 0.8s forwards;
+}
+.slideOut {
+  animation: slideOut 0.8s forwards;
+}
+
+.App {
+  text-align: center;
+
+  .navtoggler {
+    position: fixed;
+    top: 5vw;
+    left: 5vw;
+    z-index: 1;
+  }
+
+  .navbar {
+    position: fixed;
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(240,20,20, 0.5);
+    margin-left: -50vw;
+
+  }
+}
+//--------------Start--------------
+.Start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vw;
+}
+//--------------Signin--------------
+@keyframes slideRight {
+  from {margin-left: 0;}
+  to {margin-left: -100vw}
+}
+@keyframes slideLeft {
+  from {margin-left: -100vw}
+  to {margin-left: 0;}
+}
+
+.slideRight {
+  animation: slideRight 0.8s forwards;
+}
+.slideLeft {
+  animation: slideLeft 0.8s forwards;
+}
+
+.Signin {
+  border: 1px solid pink;
+  height: 100vh;
+  width: 200vw;
+  display: flex;
+  align-items: center;
+
+  .Signup {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+  }
+  .Login {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+//--------------Profile--------------
+//--------------Closet--------------
+.Closet {
+
+  .adder {
+    position: fixed;
+    bottom: 5vw;
+    right: 5vw;
+    z-index: 1;
+  }
+
+  .item-list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+//--------------ItemCard--------------
+.ItemCard {
+  width: 40vw;
+  height: 40vw;
+  overflow: hidden;
+  margin: 10px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+}
+//--------------ItemDetail--------------
+.ItemDetail {
+  .header {
+    width: 100vw;
+    height: 50vh;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+//--------------AddItem--------------
+.AddItem {
+
+}
+//--------------OOTD--------------

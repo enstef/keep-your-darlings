@@ -26,26 +26,26 @@ router.get("/items", isLoggedIn, (req, res, next) => {
 })
 
 // TODO: change it to GET, and send some req.query
-router.post("/items", isLoggedIn, (req, res, next) => {
+router.patch("/items", isLoggedIn, (req, res, next) => {
   console.log(req.body)
   let search_params
   search_params = { $text: {$search: req.body.textsearch }}
 
   // if (!req.body.textsearch) {
   // search_params = {
-    // $and: [
-      //  $text: { $search: req.body.textsearch }
-      // {
-      //   $and: [
-      //     { $cond: { if: (_category), then: { _category: req.body._category}, else: {}}}
-      //     // { _category: req.body._category },
-      //     // { subcategory: req.body.subcategory },
-          // { season: req.body.season },
-          // { color: req.body.color },
-          // { brand: req.body.brand }
-        // ]
-      // }
-    // ]
+  //   $and: [
+  //      $text: { $search: req.body.textsearch }
+  //     {
+  //       $and: [
+  //         { $cond: { if: (_category), then: { _category: req.body._category}, else: {}}}
+  //         // { _category: req.body._category },
+  //         // { subcategory: req.body.subcategory },
+  //         { season: req.body.season },
+  //         { color: req.body.color },
+  //         { brand: req.body.brand }
+  //       ]
+  //     }
+  //   ]
   // }
   // }
   // else {
@@ -73,8 +73,8 @@ router.post("/items", isLoggedIn, (req, res, next) => {
 router.post('/items', isLoggedIn, parser.single('picture'), (req, res, next) => {
   let _owner = req.user._id
   let pictureUrl = req.file.secure_url
-  let { _category, subcategory, season, color, tags, brand, boughtOn, price, wornOn } = req.body
-  Item.create({ _category, subcategory, season, color, tags, brand, boughtOn, price, wornOn, _owner, pictureUrl })
+  let { _category, subcategory, season, color, tags, brand, boughtOn, price } = req.body
+  Item.create({ _category, subcategory, season, color, tags, brand, boughtOn, price, _owner, pictureUrl })
     .then(item => {
       res.json({
         success: true,
@@ -87,7 +87,7 @@ router.post('/items', isLoggedIn, parser.single('picture'), (req, res, next) => 
         error: err
       })
     })
-});
+})
 
 router.get("/items/:_id", isLoggedIn, (req, res, next) => {
   Item.findOne({ _id: req.params._id })
@@ -108,6 +108,6 @@ router.get('/categories', (req, res, next) => {
       res.json(categories);
     })
     .catch(err => next(err))
-});
+})
 
 module.exports = router

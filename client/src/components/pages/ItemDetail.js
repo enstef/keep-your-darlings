@@ -1,62 +1,58 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import api from '../../api'
-// import './ItemDetail.css';
 
 class ItemDetail extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      name: "",
-      tags: "",
-      _category: "",
-      season: [],
-      color: [],
-      boughtOn: "",
-      price: "",
-      pictureUrl: "",
-      categories: []
+      item: "",
     }
+    this.handleDelete = this.handleDelete.bind(this)
   }
+
+  handleDelete() {
+    api.deleteItem()
+    .then(result => {
+      console.log('Deleted!')
+      this.props.history.push("/closet")
+    })
+    .catch(err => {
+      console.log('ERROR')
+    })
+  }
+
   render() {
     return (
-        <div className="ItemDetail">
-        <Link to="/closet">Back</Link>
-        <h1>Look, one of your Darlings!</h1>
-          <img src={this.state.pictureUrl} alt="item" width="500" height="500"/>
-        <h1>{this.state.name}</h1>   
-        <p>{this.state.tags}</p> 
-        <p>{this.state._category}</p>
-        <p>{this.state.season}</p>
-        <p>{this.state.color}</p>
-        <p>{this.state.boughtOn}</p>
-        <p>{this.state.price}</p>
-        <p>{this.state.wornOn}</p>
-        { this.state.wornOn && <p>Good Job wearing! 😉 </p> }
-        { !this.state.wornOn && <p>Never worn yet! 😔 </p> }
-        <p>{this.state._owner}</p>
-          <button onClick={this.state.clickToDelete}>Delete</button>
+      <div className="ItemDetail onepage">
+        {/* <h1>Look, one of your Darlings!</h1> */}
+        <div className="header">
+          <img src={this.state.item.pictureUrl} alt="item"/>
+        </div>
+        <p>{this.state.item.tags}</p>
+        <p>{this.state.item.season}</p>
+        <p>{this.state.item.color}</p>
+        <p>{this.state.item.boughtOn}</p>
+        <p>{this.state.item.price}</p>
+        <p>{this.state.item.wornOn}</p>
+        {/* {this.state.item.wornOn && <p>Good Job wearing!</p>}
+        {!this.state.item.wornOn && <p>Never worn yet!</p>} */}
+        <button onClick={this.handleDelete}>Delete</button>
+        <Link to="/closet">
+          <button class="closeter">Back</button>
+        </Link>
       </div>
-      );
-    }
-    componentDidMount() {
-      api.getItem(this.props.match.params.id)
-        .then(item => {
-          console.log(item)
-          this.setState({
-            item: item,
-            name: item.name,
-            tags: item.tags,
-            _category: item._category,
-            season: item.season,
-            color: item.color,
-            boughtOn: item.boughtOn,
-            price: item.price,
-            pictureUrl: item.pictureUrl,
-            categories: item.categories
-          })
+    );
+  }
+  
+  componentDidMount() {
+    api.getItem(this.props.match.params._id)
+      .then(item => {
+        this.setState({
+          item: item,
         })
-        .catch(err => console.log(err))
-    }
+      })
+      .catch(err => console.log(err))
+  }
 }
 export default ItemDetail;

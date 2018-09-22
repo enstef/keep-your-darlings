@@ -11,8 +11,8 @@ class Profile extends Component {
 
   render() {                
     return (
-      <div className="Profile">
-        <h1>Usernames Profile</h1>
+      <div className="Profile onepage">
+        <h1>Profile</h1>
         <p>Neat welcome message</p>
         <p>Statistics</p>
         <Link to="/ootd">OOTD</Link> <br/>
