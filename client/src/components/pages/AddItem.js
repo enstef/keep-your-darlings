@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import api from '../../api';
-import {
-  Container, Col, Form,
-  FormGroup, Label, Input,
-  Button,
-} from 'reactstrap';
-
-import './AddItem.css';
+// import {
+//   Container, Col, Form,
+//   FormGroup, Label, Input,
+//   Button,
+// } from 'reactstrap';
 
 class AddItem extends Component {
   constructor(props) {
@@ -22,7 +20,7 @@ class AddItem extends Component {
       color: "",
       tags: "",
       brand: "",
-      bougthOn: "",
+      boughtOn: "",
       price: "",
       _id: "",
     }
@@ -35,8 +33,8 @@ class AddItem extends Component {
   //   // let path = `/item/:id`;
   //   // let path = `/closet/item/` + id;
   //   // let path = `/item/${this.props.match.params.id}`;
-
   // }
+  
   handleFileUpload(e) {
     this.setState({
       picture: e.target.files[0]
@@ -68,7 +66,9 @@ class AddItem extends Component {
       })
     }
   }
+
   handleSubmit(e) {
+    console.log("why")
     e.preventDefault()
 
     let data = {
@@ -79,7 +79,7 @@ class AddItem extends Component {
       color: this.state.color,
       tags: this.state.tags,
       brand: this.state.brand,
-      bougthOn: this.state.bougthOn,
+      boughtOn: this.state.boughtOn,
       price: this.state.price
     }
 
@@ -87,7 +87,7 @@ class AddItem extends Component {
       .then(result => {
         console.log('SUCCESS!')
         console.log('RESULT -->', result)
-        let path = `/item/${result.item._id}`
+        let path = `/closet/item/${result.item._id}`
         this.props.history.push(path)
       })
       .catch(err => console.log('ERROR', err))
@@ -97,57 +97,62 @@ class AddItem extends Component {
     const seasons = ["Spring", "Summer", "Autmn", "Winter"]
     const colors = ["Black", "White", "Grey", "Red", "Pink", "Yellow", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     return (
-      <div className="AddItem">
-        <Link to="/closet">Back</Link>
-        <h1>Add Item</h1>
+      <div className="onepage">
 
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+        <div className="AddItem">
+          <h1>Add Item</h1>
 
-          <input type="file" name="picture" onChange={this.handleFileUpload} /> <br />
+          <form onSubmit={this.handleSubmit} encType="multipart/form-data">
 
-          Category:
+            <input type="file" name="picture" onChange={this.handleFileUpload} /> <br />
+
+            Category:
           <div>
-            {this.state.categories.map((category, i) => (
-              <button onClick={e => this.handleRequiredClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
-            ))}
-          </div>
-          <br />
-
-          {this.state._category &&
-            <div>
-              {this.state._category.subcategories.map((subcategory, i) => (
-                <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
+              {this.state.categories.map((category, i) => (
+                <button onClick={e => this.handleRequiredClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
               ))}
             </div>
-          }
+            <br />
 
-          Season:
+            {this.state._category &&
+              <div>
+                {this.state._category.subcategories.map((subcategory, i) => (
+                  <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
+                ))}
+              </div>
+            }
+
+            Season:
           <div>
-            {seasons.map((season, i) => (
-              <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
-            ))}
-          </div>
+              {seasons.map((season, i) => (
+                <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
+              ))}
+            </div>
 
-          Colors:
+            Colors:
           <div>
-            {colors.map((color, i) => (
-              <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
-            ))}
-          </div>
+              {colors.map((color, i) => (
+                <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
+              ))}
+            </div>
 
-          Tags:
+            Tags:
           <textarea name="tags" value={this.state.tags} cols="30" rows="5" onChange={this.handleInputChange} /> <br />
-          Brand:
+            Brand:
           <input type="text" name="brand" value={this.state.brand} onChange={this.handleInputChange} /> <br />
 
 
-          Bought On:
+            Bought On:
           <input type="date" name="boughtOn" value={this.state.boughtOn} onChange={this.handleInputChange} /> <br />
-          Price:
+            Price:
           <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange} /> <br />
 
-          <Button color="primary" className="" type="submit" >Add New Item</Button>
-        </form>
+            <button type="submit">Add New Item</button>
+          </form>
+        </div>
+         <Link to="/closet">
+          <button className="closeter">Back</button>
+        </Link>
 
       </div>
     );

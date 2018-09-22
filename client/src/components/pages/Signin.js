@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api';
+
 // import {
 //   Container, Col, Form,
 //   FormGroup, Label, Input,
@@ -12,10 +13,15 @@ class Signin extends Component {
     this.state = {
       email: "",
       password: "",
+      //
+      login: false,
+      signup: "",
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSignup = this.handleSignup.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
+    this.slideRight = this.slideRight.bind(this)
+    this.slideLeft = this.slideLeft.bind(this)
   }
 
   handleInputChange(e) {
@@ -25,7 +31,6 @@ class Signin extends Component {
   }
 
   handleSignup(e) {
-    console.log("why")
     e.preventDefault()
     api.signup(this.state.email, this.state.password)
       .then(result => {
@@ -36,7 +41,6 @@ class Signin extends Component {
         console.log('ERROR')
       })
   }
-
   handleLogin(e) {
     e.preventDefault()
     api.login(this.state.email, this.state.password)
@@ -49,26 +53,45 @@ class Signin extends Component {
       })
   }
 
+  slideRight(e) {
+    this.setState({
+      login: true,
+      signup: false
+    })
+  }
+  slideLeft(e) {
+    this.setState({
+      login: false,
+      signup: true,
+    })
+  }
+
   render() {
     return (
-      <div className="Signin">
-        <div className="Signup">
-          <h2>Signup</h2>
-          <form>
-            Email: <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange} /> <br />
-            Password: <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} /> <br />
-            <button onClick={this.handleSignup}>Signup</button>
-          </form>
-        </div>
+      <div className="onepage">
+      <div className={this.state.login ? "Signin slideRight" : "Signin" && this.state.signup ? "Signin slideLeft" : "Signin"}>
 
-        <div className="Login">
-          <h2>Login</h2>
-          <form>
-            Email: <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange} /> <br />
-            Password: <input type="password"  name="password" value={this.state.password} onChange={this.handleInputChange} /> <br />
-            <button onClick={this.handleLogin}>Login</button>
-          </form>
-        </div>
+            <div className="Signup">
+              <h2>Signup</h2>
+              <form>
+                Email: <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange} /> <br />
+                Password: <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} /> <br />
+                <button onClick={this.handleSignup}>Signup</button>
+              </form>
+              <button onClick={this.slideRight}>Login</button>
+            </div>
+
+            <div className="Login">
+              <h2>Login</h2>
+              <form>
+                Email: <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange} /> <br />
+                Password: <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} /> <br />
+                <button onClick={this.handleLogin}>Login</button>
+              </form>
+              <button onClick={this.slideLeft}>Signup</button>
+            </div>
+
+      </div>
       </div>
     )
   }

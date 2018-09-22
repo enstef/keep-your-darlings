@@ -11,7 +11,7 @@ const itemSchema = new Schema({
   color: String,
   tags: String,
   brand: String,
-  bougthOn: Date,
+  boughtOn: Date,
   price: Number,
   wornOn: [Date],
   _owner: {

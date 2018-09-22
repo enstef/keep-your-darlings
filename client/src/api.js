@@ -62,21 +62,28 @@ export default {
       .catch(errHandler);
   },
 
-  filterCloset(search) {
-    console.log("filterCloset")
-    return service
-      .post("/closet/items", {
-        textsearch: search
-      })
-      .then(res => res.data)
-      .catch(errHandler)
-  },
+  // filterCloset(search) {
+  //   console.log("filterCloset")
+  //   return service
+  //     .post("/closet/items", {
+  //       textsearch: search
+  //     })
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // },
 
   getItem(id) {
     return service
       .get('/closet/items/'+ id)
       .then(res => res.data)
-      .catch(errHandler);
+      .catch(errHandler)
+  },
+
+  deleteItem() {
+    return service
+      .get("/closet/items/")
+      .then(res => res.data)
+      .catch(errHandler)
   },
 
   postItem(data) {
@@ -88,7 +95,7 @@ export default {
     formData.append("color", data.color)
     formData.append("tags", data.tags)
     formData.append("brand", data.brand)
-    formData.append("bougthOn", data.bougthOn)
+    formData.append("boughtOn", data.boughtOn)
     formData.append("price", data.price)
 
     return service
@@ -96,23 +103,6 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
-
-  /*
-  router.delete("/item/:_id", isLoggedIn, (req, res, next) => {
-    Item.findOneAndRemove({_id: req.params._id})
-    res.json({message: "Item removed"})
-  })
-  
-  */
-
-  // deleteItem(data) {
-  //   const data = data.filter(i => i.id !== item.id)
-  //   this.setState({ data })
-  //   return service
-  //     .get('/closet')
-  //     .then(res => res.data)
-  //     .catch(errHandler);
-  // }
 
   getCategories() {
     return service

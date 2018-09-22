@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom"
 import api from '../../api';
 
 import ItemCard from "./ItemCard"
@@ -123,22 +124,28 @@ class Closet extends Component {
             </div>
 
             Brand:
-            {/* got throug all brands yay */}
+            {/* TODO: go through all brands yay */}
           </form>
         </div>
 
         <h2>My Closet</h2>
-        {this.state.items.map((item, i) =>
-          <ItemCard key={i} item={item} />
-        )}
+        <div className="item-list">
+          {this.state.items.map((item, i) =>
+            <Link to={`/closet/item/${item._id}`} key={i}><ItemCard item={item} /></Link>
+          )}
+        </div>
+          
+        <Link to="/add-item">
+          <button className="adder">Add</button>
+        </Link>
       </div>
     );
   }
 
   componentDidMount() {
+    
     api.getCloset()
       .then(items => {
-        console.log(items)
         this.setState({
           items: items
         })
