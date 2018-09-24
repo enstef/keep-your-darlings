@@ -17,6 +17,21 @@ class Ootd extends Component {
     });
   }
 
+  // handleOutfit(itemId) {
+  //   if (this.state.outfit.includes(itemId)) {
+  //     this.setState({
+  //       outfit: this.state.outfit.filter(item => item !== itemId)
+  //     })
+  //   } else {
+  //     this.setState({
+  //       outfit: [...this.state.outfit, itemId]
+  //     })
+  //   }
+  // }
+
+  //e.target.element.class = "selectedOutfit"      OR in <ItemCard className={this.state._category === category ? "active" : null}/>
+
+
   // handleSubmit(data) {
   //   updateOutfit(this.state.outfit.id, data);
   // }
@@ -26,10 +41,13 @@ class Ootd extends Component {
         <h1>OOTD</h1>
         <p>What are you wearing today Darling? Keep track and try out new combinations from time to time.<br />
           Life is to short to be boring, be daring instead!</p>
+        {this.state.outfit.map(item => (
+          <div><h5>{item}</h5></div>
+        ))}
 
         <Button onClick={this._onAddOOTDClick} className="adder">Add</Button>
         {this.state.showComponent ?
-          <AddOutfit /> :
+          <AddOutfit handleOutfit={this.handleOutfit.bind(this)} /> :
           null
         }
       </div>
