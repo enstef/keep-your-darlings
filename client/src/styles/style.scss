@@ -11,6 +11,9 @@ $primary: rgb(151, 151, 245);
 @import 'bootstrap/scss/bootstrap';
 
 //--------------Fancy--------------
+*:focus {
+  outline: none;
+}
 .active {
   color: red;
 }
@@ -131,6 +134,21 @@ $primary: rgb(151, 151, 245);
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
+  }
+
+  form {
+
+    .textsearch {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid lightblue;
+      text-align: center;
+      line-height: 4em;
+    }
+    .link-like-button {
+      border: none;
+      background: transparent;
+    }
   }
 }
 //--------------ItemCard--------------

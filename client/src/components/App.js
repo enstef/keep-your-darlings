@@ -18,20 +18,28 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      visible: "",
-
+      firstLoad: true,
+      visible: false
     }
     this.showNav = this.showNav.bind(this)
+    this.handleNavLinkClick = this.handleNavLinkClick.bind(this)
   }
 
   showNav(e) {
     this.setState(prev => ({
+      firstLoad: false,
       visible: !prev.visible
     }))
   }
 
   handleLogoutClick(e) {
     api.logout()
+  }
+
+  handleNavLinkClick() {
+    this.setState({
+      visible: !this.state.visible
+    })
   }
 
   render() {
@@ -50,11 +58,11 @@ class App extends Component {
       return (
         <div className="App">
           <button className="navtoggler" onClick={this.showNav}>NAV</button>
-          <nav className={this.state.visible ? "navbar slideOut" : "navbar slideIn"}>
+          <nav className={this.state.firstLoad ? "navbar" : (this.state.visible ? "navbar slideOut" : "navbar slideIn")}>
             <h1>Keep your darlings</h1>
-            <Link to="/profile">Profile</Link>
-            <Link to="/closet">Closet</Link>
-            <Link to="/ootd">OOTD</Link>
+            <Link to="/profile" onClick={this.handleNavLinkClick}>Profile</Link>
+            <Link to="/closet" onClick={this.handleNavLinkClick}>Closet</Link>
+            <Link to="/ootd" onClick={this.handleNavLinkClick}>OOTD</Link>
             <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
           </nav>
           <Switch>

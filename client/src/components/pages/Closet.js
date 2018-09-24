@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom"
 import api from '../../api';
+import { UncontrolledCollapse } from 'reactstrap';
 
 import ItemCard from "./ItemCard"
 
@@ -61,62 +62,66 @@ class Closet extends Component {
       <div className="Closet">
         <div className="filter">
           <form>
-            <input type="text" onChange={this.handleTextsearch} placeholder="search by keyword" /> <br />
+            <input className="textsearch" type="text" onChange={this.handleTextsearch} placeholder="search by keyword" /> <br />
 
-            Category:
+            <button className="link-like-button"id="toggler">Additional Filters</button>
+
+            <UncontrolledCollapse toggler="#toggler">
+              Category:
           <div>
-              {this.state.categories.map((category, i) => (
-                <button name="_category" onClick={e => this.handleOptionalClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
-              ))}
-            </div>
-            <br />
-
-            {this.state._category &&
-              <div>
-                {this.state._category.subcategories.map((subcategory, i) => (
-                  <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
+                {this.state.categories.map((category, i) => (
+                  <button id="toggler" name="_category" onClick={e => this.handleOptionalClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
                 ))}
               </div>
-            }
-
-            Season:
+              <br />
+              {this.state._category &&
+                <div>
+                  {this.state._category.subcategories.map((subcategory, i) => (
+                    <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
+                  ))}
+                </div>
+              }
+              Season:
           <div>
-              {seasons.map((season, i) => (
-                <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
-              ))}
-            </div>
+                {seasons.map((season, i) => (
+                  <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
+                ))}
+              </div>
 
-            Colors:
+              Colors:
           <div>
-              {colors.map((color, i) => (
-                <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
-              ))}
-            </div>
+                {colors.map((color, i) => (
+                  <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
+                ))}
+              </div>
 
-            Brand:
+              Brand:
             <select name="brand" onChange={this.handleSelect}>
-              {brands.map((brand, i) => (
-                <option key={i}>{brand}</option>
-              ))}
-            </select>
+                <option value="">All</option>
+                {brands.map((brand, i) => (
+                  <option key={i}>{brand}</option>
+                ))}
+              </select>
+            </UncontrolledCollapse>
           </form>
         </div>
 
         <h2>My Closet</h2>
         <div className="item-list">
           {this.state.items.filter(item => {
-              return (
-                item.tags.toUpperCase().includes(this.state.textsearch.toUpperCase())
-                && (this.state._category ? (item._category === this.state._category._id) : item)
-                && (this.state.subcategory ? (item.subcategory === this.state.subcategory) : item)
-                && (this.state.season ? (item.season === this.state.season) : item)
-                && (this.state.color ? (item.color === this.state.color) : item)
-                && (this.state.brand ? (item.brand === this.state.brand) : item)
-            )}).map((item, i) => (
-              <Link to={`/closet/item/${item._id}`} key={i}><ItemCard item={item} /></Link>
-            ))}
+            return (
+              item.tags.toUpperCase().includes(this.state.textsearch.toUpperCase())
+              && (this.state._category ? (item._category === this.state._category._id) : item)
+              && (this.state.subcategory ? (item.subcategory === this.state.subcategory) : item)
+              && (this.state.season ? (item.season === this.state.season) : item)
+              && (this.state.color ? (item.color === this.state.color) : item)
+              && (this.state.brand ? (item.brand === this.state.brand) : item)
+            )
+          }).map((item, i) => (
+            <Link to={`/closet/item/${item._id}`} key={i}><ItemCard item={item} /></Link>
+          ))}
         </div>
-          
+
         <Link to="/add-item">
           <button className="adder">Add</button>
         </Link>
@@ -125,7 +130,7 @@ class Closet extends Component {
   }
 
   componentDidMount() {
-    
+
     api.getCloset()
       .then(items => {
         this.setState({

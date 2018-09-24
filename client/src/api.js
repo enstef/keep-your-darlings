@@ -62,17 +62,26 @@ export default {
       .catch(errHandler);
   },
 
+  // filterCloset(search) {
+  //   console.log("filterCloset")
+  //   return service
+  //     .post("/closet/items", {
+  //       textsearch: search
+  //     })
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // },
 
   getItem(id) {
     return service
-      .get('/closet/items/' + id)
+      .get('/closet/items/'+ id)
       .then(res => res.data)
       .catch(errHandler)
   },
 
-  deleteItem(id) {
+  deleteItem() {
     return service
-      .delete("/closet/items/"+ id)
+      .get("/closet/items/")
       .then(res => res.data)
       .catch(errHandler)
   },
@@ -102,14 +111,4 @@ export default {
       .catch(errHandler);
   },
 
-  postOutfit(data) {
-    let outfitOfTheDay
-    return service
-      .post('/ootd')
-      // .post('/ootd', {
-      //   wornOn
-      // })
-      .then(res => res.data)
-      .catch(errHandler)
-  }
 };

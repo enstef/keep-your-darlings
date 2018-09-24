@@ -6312,6 +6312,9 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+*:focus {
+  outline: none; }
+
 .active {
   color: red; }
 
@@ -6417,6 +6420,17 @@ a.text-dark:hover, a.text-dark:focus {
   flex-flow: row wrap;
   align-items: center;
   justify-content: center; }
+
+.Closet form .textsearch {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid lightblue;
+  text-align: center;
+  line-height: 4em; }
+
+.Closet form .link-like-button {
+  border: none;
+  background: transparent; }
 
 .ItemCard {
   width: 40vw;
