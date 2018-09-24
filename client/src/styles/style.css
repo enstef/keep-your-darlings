@@ -6315,6 +6315,9 @@ a.text-dark:hover, a.text-dark:focus {
 .active {
   color: red; }
 
+.hidden {
+  display: none; }
+
 .onepage {
   height: 100vh;
   width: 100vw;

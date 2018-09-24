@@ -21,8 +21,6 @@ const itemSchema = new Schema({
   pictureUrl: String,
 })
 
-itemSchema.index({"$**": "text"})
-
 const Item = mongoose.model("Item", itemSchema)
 
 module.exports = Item

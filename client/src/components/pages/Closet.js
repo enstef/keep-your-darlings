@@ -9,10 +9,11 @@ class Closet extends Component {
     super(props)
     this.state = {
       items: [],
+      untouchedItems: [],
       categories: [],
       //
       textsearch: "",
-      category: "",
+      _category: "",
       subcategory: "",
       season: "",
       color: "",
@@ -20,6 +21,7 @@ class Closet extends Component {
       brand: "",
     }
     this.handleTextsearch = this.handleTextsearch.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   handleTextsearch(e) {
@@ -28,29 +30,10 @@ class Closet extends Component {
     this.setState({
       textsearch
     })
-
-    if (!textsearch) {
-      api.getCloset()
-        .then(items => {
-          console.log(items)
-          this.setState({
-            items: items
-          })
-        })
-        .catch(err => console.log(err))
-    }
-    
-    else {
-      api.filterCloset(textsearch)
-        .then(items => {
-          this.setState({
-            items: items
-          })
-        })
-    }
   }
 
   handleOptionalClick(e, value) {
+    console.log(this.state[e.target.name])
     e.preventDefault()
     if (this.state[e.target.name] === value) {
       this.setState({
@@ -64,29 +47,16 @@ class Closet extends Component {
     }
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault()
-
-  //   let data = {
-  //     textsearch: this.state.textsearch,
-  //     _category: this.state._category._id,
-  //     subcategory: this.state.subcategory,
-  //     season: this.state.season,
-  //     color: this.state.color,
-  //     brand: this.state.brand,
-  //   }
-
-  //   api.filterCloset(data)
-  //     .then(items => {
-  //       this.setState({
-  //         items: items
-  //       })
-  //     })
-  // }
+  handleSelect(e) {
+    this.setState({
+      brand: e.target.value
+    })
+  }
 
   render() {
     const seasons = ["Spring", "Summer", "Autmn", "Winter"]
     const colors = ["Black", "White", "Grey", "Red", "Pink", "Yellow", "Blue", "Green", "Brown", "Mixed", "Metallic"]
+    const brands = [...new Set(this.state.items.map(item => item.brand))]
     return (
       <div className="Closet">
         <div className="filter">
@@ -124,15 +94,27 @@ class Closet extends Component {
             </div>
 
             Brand:
-            {/* TODO: go through all brands yay */}
+            <select name="brand" onChange={this.handleSelect}>
+              {brands.map((brand, i) => (
+                <option key={i}>{brand}</option>
+              ))}
+            </select>
           </form>
         </div>
 
         <h2>My Closet</h2>
         <div className="item-list">
-          {this.state.items.map((item, i) =>
-            <Link to={`/closet/item/${item._id}`} key={i}><ItemCard item={item} /></Link>
-          )}
+          {this.state.items.filter(item => {
+              return (
+                item.tags.toUpperCase().includes(this.state.textsearch.toUpperCase())
+                && (this.state._category ? (item._category === this.state._category._id) : item)
+                && (this.state.subcategory ? (item.subcategory === this.state.subcategory) : item)
+                && (this.state.season ? (item.season === this.state.season) : item)
+                && (this.state.color ? (item.color === this.state.color) : item)
+                && (this.state.brand ? (item.brand === this.state.brand) : item)
+            )}).map((item, i) => (
+              <Link to={`/closet/item/${item._id}`} key={i}><ItemCard item={item} /></Link>
+            ))}
         </div>
           
         <Link to="/add-item">
@@ -147,7 +129,8 @@ class Closet extends Component {
     api.getCloset()
       .then(items => {
         this.setState({
-          items: items
+          items: items,
+          untouchedItems: items
         })
       })
       .catch(err => console.log(err))
