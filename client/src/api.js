@@ -74,7 +74,7 @@ export default {
 
   getItem(id) {
     return service
-      .get('/closet/items/'+ id)
+      .get('/closet/items/' + id)
       .then(res => res.data)
       .catch(errHandler)
   },
@@ -111,4 +111,14 @@ export default {
       .catch(errHandler);
   },
 
+  postOutfit(data) {
+    let outfitOfTheDay
+    return service
+      .post('/ootd')
+      // .post('/ootd', {
+      //   wornOn
+      // })
+      .then(res => res.data)
+      .catch(errHandler)
+  }
 };

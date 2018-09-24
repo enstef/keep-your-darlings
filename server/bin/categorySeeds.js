@@ -5,7 +5,7 @@ const Category = require("../models/Category");
 const bcryptSalt = 10;
 
 mongoose
-  .connect("mongodb://localhost/kyd", {useNewUrlParser: true})
+  .connect("mongodb://localhost/kyd", { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -15,57 +15,36 @@ mongoose
 
 let categories = [
   {
-    name: "clothing",
-    subcategories: ["jacket", "coat", "cardigan", "pullover","sweater", "t-shirt", "blouse", "dress", "skirt", "overall", "shirttop", "pants", "jeans", "shorts",  ]
+    name: "Clothing",
+    subcategories: ["Jackets", "Hoodies", "Coats", "Cardigans", "Pullovers", "Sweaters", "T-Shirts", "Blouses", "Dresses", "Skirts", "Overalls", "Tops", "Pants", "Jeans", "Shorts", "Blazers", "Vests"]
   },
   {
-    name: "shoes",
-    subcategories: ["sneakers", "espandrilles", "kneehighboots", "mules", "loafers", "boots", "pumps", "highheels", "ankleboots", "chelseaboots", "brougues", "sandals", "flats", "slippers", "laceups", "wedges", "ballerinas"]
+    name: "Shoes",
+    subcategories: ["Sneakers", "Espadrilles", "Overknees", "Mules", "Loafers", "Boots", "Pumps", "Highheels", "Ankleboots", "Chelseaboots", "Brougues", "Sandals", "Flats", "Slippers", "Laceups", "Wedges", "Ballerinas"]
   },
   {
-    name: "special",
-    subcategories: ["swimwear", "sportswear", "lingerie", "costumes", "formalwear", "other"]
+    name: "Special",
+    subcategories: ["Swimwear", "Sportswear", "Lingerie", "Costumes", "Formalwear", "Other"]
   },
   {
     name: "accessoires",
-    subcategories: ["necklace", "ring", "hat", "sunglasses", "watch", "gloves", "scarf", "belt", "jewelry", "bracelet"]
+    subcategories: ["Necklacees", "Rings", "Umbrellas", "Ties", "Hats", "Sunglasses", "Watches", "Gloves", "Scarves", "Belts", "Jewelry", "Bracelets"]
   },
   {
-    name: "bags",
-    subcategories: ["fannypack", "tote", "messenger", "backpack", "satchel", "bucketbag", "clutch", "duffelbag", "shoulderbag", "weekender", "handbag", "laptopbag", "beachbag", "drawstringbag"]
+    name: "Bags",
+    subcategories: ["Fannypacks", "Totes", "Messengers", "Backpacks", "Satchels", "Bucketbags", "Clutches", "Duffelbags", "Shoulderbags", "Weekenders", "Handbags", "Laptopbags", "Beachbags"]
   }
 ]
-
-
-
-/*
-let categories = [
-  {
-    name: "clothing",
-    subcategories: ["jacket", "coat", "cardigan", "pullover","sweater", "t-shirt", "blouse", "dress", "skirt", "overall", "shirttop", "pants", "jeans", "shorts",  ]
-  },
-  {
-    name: "shoes",
-    subcategories: ["sneakers", "espandrilles", "kneehighboots", "mules", "loafers", "boots", "pumps", "highheels", "ankleboots", "chelseaboots", "brougues", "sandals", "flats", "slippers", "laceups", "wedges", "ballerinas"]
-  },
-  {
-    name: "special",
-    subcategories: ["swimwear", "sportswear", "lingerie", "costumes", "formalwear", "other"]
-  }
-]
-*/
-
-
 
 Category.create(categories)
-.then(categoriesCreated => {
-  console.log(`${categoriesCreated.length} categories created`);
-})
-.then(() => {
-  mongoose.disconnect()
-})
-.catch(err => {
-  mongoose.disconnect()
-  throw err
-})
+  .then(categoriesCreated => {
+    console.log(`${categoriesCreated.length} categories created`);
+  })
+  .then(() => {
+    mongoose.disconnect()
+  })
+  .catch(err => {
+    mongoose.disconnect()
+    throw err
+  })
 
