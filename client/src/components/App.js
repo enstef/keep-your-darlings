@@ -6,8 +6,9 @@ import Start from './pages/Start';
 import Closet from './pages/Closet';
 import AddItem from './pages/AddItem';
 import Signin from './pages/Signin';
-import Profile from "./pages/Profile"
+import Profile from './pages/Profile';
 import ItemDetail from './pages/ItemDetail';
+import Ootd from './pages/Ootd';
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -53,6 +54,7 @@ class App extends Component {
             <h1>Keep your darlings</h1>
             <Link to="/profile">Profile</Link>
             <Link to="/closet">Closet</Link>
+            <Link to="/ootd">OOTD</Link>
             <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
           </nav>
           <Switch>
@@ -61,6 +63,7 @@ class App extends Component {
             <Route exact path="/closet" component={Closet} />
             <Route exact path="/closet/item/:_id" component={ItemDetail} />
             <Route path="/add-item" component={AddItem} />
+            <Route path="/ootd" component={Ootd} />
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>
