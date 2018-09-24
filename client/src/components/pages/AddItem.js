@@ -36,6 +36,7 @@ class AddItem extends Component {
   // }
   
   handleFileUpload(e) {
+    console.log(e.target.files[0])
     this.setState({
       picture: e.target.files[0]
     })
@@ -68,7 +69,6 @@ class AddItem extends Component {
   }
 
   handleSubmit(e) {
-    console.log("why")
     e.preventDefault()
 
     let data = {

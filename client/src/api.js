@@ -62,15 +62,6 @@ export default {
       .catch(errHandler);
   },
 
-  // filterCloset(search) {
-  //   console.log("filterCloset")
-  //   return service
-  //     .post("/closet/items", {
-  //       textsearch: search
-  //     })
-  //     .then(res => res.data)
-  //     .catch(errHandler)
-  // },
 
   getItem(id) {
     return service
@@ -79,9 +70,9 @@ export default {
       .catch(errHandler)
   },
 
-  deleteItem() {
+  deleteItem(id) {
     return service
-      .get("/closet/items/")
+      .delete("/closet/items/"+ id)
       .then(res => res.data)
       .catch(errHandler)
   },
