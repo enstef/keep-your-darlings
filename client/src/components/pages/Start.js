@@ -16,7 +16,7 @@ class Start extends Component {
       return (
         <div className="Start onepage">
           <div className="">
-            <h2>Keep Your Darlings</h2>
+            <h1>Keep Your Darlings</h1>
             <p>We want to help you get organized and save money and stuff</p>
             <p>Not yet a member?</p>
             <Link to="/signin">Start</Link>

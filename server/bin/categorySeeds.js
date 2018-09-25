@@ -5,7 +5,7 @@ const Category = require("../models/Category");
 const bcryptSalt = 10;
 
 mongoose
-  .connect("mongodb://localhost/kyd", { useNewUrlParser: true })
+  .connect("mongodb://localhost/keep-your-darlings", { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -16,23 +16,23 @@ mongoose
 let categories = [
   {
     name: "Clothing",
-    subcategories: ["Jackets", "Hoodies", "Coats", "Cardigans", "Pullovers", "Sweaters", "T-Shirts", "Blouses", "Dresses", "Skirts", "Overalls", "Tops", "Pants", "Jeans", "Shorts", "Blazers", "Vests"]
+    subcategories: ["Pants", "Jeans", "Shorts", "Tops", "T-Shirts", "Blouses", "Pullovers", "Sweaters", "Hoodies", "Cardigans", "Blazers", "Vests", "Jackets", "Coats", "Dresses", "Skirts", "Overalls", "Pyjamas"]
   },
   {
     name: "Shoes",
-    subcategories: ["Sneakers", "Espadrilles", "Overknees", "Mules", "Loafers", "Boots", "Pumps", "Highheels", "Ankleboots", "Chelseaboots", "Brougues", "Sandals", "Flats", "Slippers", "Laceups", "Wedges", "Ballerinas"]
+    subcategories: ["Sneakers", "Boots", "Ankleboots", "Chelseaboots", "Overknees", "Loafers", "Brougues", "Flats", "Espadrilles", "Ballerinas", "Sandals", "Slippers", "Pumps", "Highheels", "Wedges", ]
   },
   {
     name: "Special",
     subcategories: ["Swimwear", "Sportswear", "Lingerie", "Costumes", "Formalwear", "Other"]
   },
   {
-    name: "accessoires",
-    subcategories: ["Necklacees", "Rings", "Umbrellas", "Ties", "Hats", "Sunglasses", "Watches", "Gloves", "Scarves", "Belts", "Jewelry", "Bracelets"]
+    name: "Accessoires",
+    subcategories: ["Necklacees", "Rings", "Bracelets", "Earrings", "Watches", "Sunglasses", "Ties", "Scarves", "Hats", "Gloves", "Belts", "Other" ]
   },
   {
     name: "Bags",
-    subcategories: ["Fannypacks", "Totes", "Messengers", "Backpacks", "Satchels", "Bucketbags", "Clutches", "Duffelbags", "Shoulderbags", "Weekenders", "Handbags", "Laptopbags", "Beachbags"]
+    subcategories: ["Backpacks", "Fannypacks", "Messengers", "Totes", "Satchels", "Bucketbags", "Clutches", "Duffelbags","Handbags", "Shoulderbags", "Weekenders", "Laptopbags", "Beachbags"]
   }
 ]
 

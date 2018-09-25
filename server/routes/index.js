@@ -6,6 +6,7 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
   res.json({
     _id: req.user._id,
     email: req.user.email,
+    username: req.user.username
   })
 })
 

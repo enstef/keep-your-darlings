@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom"
 import api from '../../api';
-import { UncontrolledCollapse } from 'reactstrap';
+import { UncontrolledCollapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import ItemCard from "./ItemCard"
 
@@ -20,6 +20,7 @@ class Closet extends Component {
       color: "",
       tags: "",
       brand: "",
+      btnDropleft: false,
     }
     this.handleTextsearch = this.handleTextsearch.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
@@ -56,57 +57,58 @@ class Closet extends Component {
 
   render() {
     const seasons = ["Spring", "Summer", "Autmn", "Winter"]
-    const colors = ["Black", "White", "Grey", "Red", "Pink", "Yellow", "Blue", "Green", "Brown", "Mixed", "Metallic"]
+    const colors = ["Black", "White", "Grey", "Red", "Pink", "Orange", "Yellow", "Purple", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     const brands = [...new Set(this.state.items.map(item => item.brand))]
     return (
       <div className="Closet">
         <div className="filter">
           <form>
-            <input className="textsearch" type="text" onChange={this.handleTextsearch} placeholder="search by keyword" /> <br />
+            <div className="filter-bar">
+              <input className="textsearch" type="text" onChange={this.handleTextsearch} placeholder="Search" />
+              <button className="link-like-button" id="toggler">Additional Filters</button>
+            </div>
 
-            <button className="link-like-button"id="toggler">Additional Filters</button>
-
-            <UncontrolledCollapse toggler="#toggler">
-              Category:
-          <div>
+            <UncontrolledCollapse className="filter-collapse" toggler="#toggler">
+              <div className="filter-section">
                 {this.state.categories.map((category, i) => (
-                  <button id="toggler" name="_category" onClick={e => this.handleOptionalClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
+                  <button name="_category" onClick={e => this.handleOptionalClick(e, category)} key={i} className={this.state._category === category ? "butt active" : "butt"}>{category.name}</button>
                 ))}
               </div>
-              <br />
+
               {this.state._category &&
-                <div>
+                <div className="filter-section">
                   {this.state._category.subcategories.map((subcategory, i) => (
-                    <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
+                    <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "butt active" : "butt"}>{subcategory}</button>
                   ))}
                 </div>
               }
-              Season:
-          <div>
+              <div className="filter-section">
                 {seasons.map((season, i) => (
-                  <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
+                  <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "butt active" : "butt"}>{season}</button>
                 ))}
               </div>
 
-              Colors:
-          <div>
+              <div className="filter-section">
                 {colors.map((color, i) => (
-                  <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
+                  <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "butt active" : "butt " + color}>{color}</button>
                 ))}
               </div>
 
-              Brand:
-            <select name="brand" onChange={this.handleSelect}>
-                <option value="">All</option>
-                {brands.map((brand, i) => (
-                  <option key={i}>{brand}</option>
-                ))}
-              </select>
+              <div className="filter-section">
+                <Dropdown direction="left" isOpen={this.state.btnDropleft} toggle={() => { this.setState({ btnDropleft: !this.state.btnDropleft }); }}>
+                  <DropdownToggle className="butt special-needs-butt"caret>Brand</DropdownToggle>
+                  <DropdownMenu>
+                  {brands.map((brand, i) => (
+                      <DropdownItem key={i}>{brand}</DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+
             </UncontrolledCollapse>
           </form>
         </div>
 
-        <h2>My Closet</h2>
         <div className="item-list">
           {this.state.items.filter(item => {
             return (
