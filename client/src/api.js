@@ -74,7 +74,7 @@ export default {
 
   getItem(id) {
     return service
-      .get('/closet/items/'+ id)
+      .get('/closet/items/' + id)
       .then(res => res.data)
       .catch(errHandler)
   },
@@ -111,4 +111,19 @@ export default {
       .catch(errHandler);
   },
 
+  // createOutfit(data) {
+  //   console.log("DATA in api -->", data)
+  //   return service
+  //     .post('/ootd', data)
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // },
+
+  // updateItemWithDate(data) {
+  //   console.log("date also in api -->", data)
+  //   return service
+  //     .patch('/item', data)
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // }
 };
