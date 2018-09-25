@@ -33,7 +33,13 @@ class App extends Component {
   }
 
   handleLogoutClick(e) {
+    this.setState({
+      visible: !this.state.visible
+    })
     api.logout()
+    .then(result => {
+      
+    })
   }
 
   handleNavLinkClick() {
@@ -72,7 +78,7 @@ class App extends Component {
             <Route exact path="/closet/item/:_id" component={ItemDetail} />
             <Route path="/add-item" component={AddItem} />
             <Route path="/ootd" component={Ootd} />
-            <Route render={() => <h2>404</h2>} />
+            <Route render={() => <Redirect to="/" />} />
           </Switch>
         </div>
       );

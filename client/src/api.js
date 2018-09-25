@@ -13,10 +13,11 @@ const errHandler = err => {
 export default {
   service: service,
 
-  signup(email, password) {
+  signup(email, username, password) {
     return service
       .post('/auth/signup', {
         email,
+        username,
         password
       })
       .then(res => res.data)
@@ -61,16 +62,6 @@ export default {
       .then(res => res.data)
       .catch(errHandler);
   },
-
-  // filterCloset(search) {
-  //   console.log("filterCloset")
-  //   return service
-  //     .post("/closet/items", {
-  //       textsearch: search
-  //     })
-  //     .then(res => res.data)
-  //     .catch(errHandler)
-  // },
 
   getItem(id) {
     return service

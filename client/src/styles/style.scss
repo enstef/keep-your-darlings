@@ -1,4 +1,4 @@
-// Your new color: here the primary color is a dark blue
+// Your new color: here the primary color is a $dark blue
 $primary: rgb(151, 151, 245);
 // $secondary
 // $success
@@ -6,21 +6,112 @@ $primary: rgb(151, 151, 245);
 // $warning
 // $danger
 // $light
-// $dark
+$dark: rgb(58, 58, 58);
 
 @import 'bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i|Rozha+One');
 
 //--------------Fancy--------------
-*:focus {
-  outline: none;
+*, button:focus {
+  outline: 0;
 }
-.active {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Karla', sans-serif;
+  overflow-y: overlay;
+}
+h1 {
+  font-family: 'Rozha One', serif;
 }
 .hidden {
   display: none
 }
-
+.butt {
+  margin: 1px;
+  padding: 10px;
+  border: 1px solid $dark;
+}
+.butt:hover {
+  color: white;
+  background-color: $dark;
+}
+.active {
+  color: white;
+  background-color: $dark;
+}
+.Black {
+  background-color: black;
+  color: white;
+}
+.Grey {
+  border: none;
+  padding: 11px;
+  background-color: grey;
+  color: white;
+}
+.Red {
+  border: none;
+  padding: 11px;
+  background-color: rgb(212, 90, 90);
+  color: white;
+}
+.Pink {
+  border: none;
+  padding: 11px;
+  background-color: rgb(255, 221, 226);
+  color: $dark;
+}
+.Orange {
+  border: none;
+  padding: 11px;
+  background-color: rgb(245, 178, 90);
+  color: $dark;
+}
+.Yellow {
+  border: none;
+  padding: 11px;
+  background-color: rgb(252, 228, 125);
+  color: $dark;
+}
+.Purple {
+  border: none;
+  padding: 11px;
+  background-color: rgb(150, 108, 189);
+  color: white;
+}
+.Blue {
+  border: none;
+  padding: 11px;
+  background-color: rgb(98, 134, 211);
+  color: white;
+}
+.Green {
+  border: none;
+  padding: 11px;
+  background-color: rgb(153, 187, 90);
+  color: white;
+}
+.Brown {
+  border: none;
+  padding: 11px;
+  background-color: rgb(173, 140, 118);
+  color: white;
+}
+.Mixed {
+  border: none;
+  padding: 11px;
+  background-image: linear-gradient(to right, rgb(144, 201, 255), rgb(187, 90, 182), rgb(233, 231, 140), rgb(245, 178, 90));
+  color: $dark;
+}
+.Metallic {
+  border: none;
+  padding: 11px;
+  background-image: linear-gradient(to right, rgb(253, 222, 122), rgb(255, 255, 255), rgb(253, 222, 122));
+  color: $dark;
+}
 //--------------General--------------
 .onepage {
   height: 100vh;
@@ -104,17 +195,25 @@ $primary: rgb(151, 151, 245);
   display: flex;
   align-items: center;
 
-  .Signup {
+  div {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     width: 100%;
-  }
-  .Login {
+
+    form {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    width: 100%;
+    width: 60%;
+
+      input {
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 
@@ -129,40 +228,80 @@ $primary: rgb(151, 151, 245);
     z-index: 1;
   }
 
-  .item-list {
+  .item-list { 
+    margin: 0 10vw 0 10vw;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin-top: 20px;
   }
 
   form {
 
-    .textsearch {
+    margin: 0 10vw 0 10vw ;
+
+    .filter-bar {
       width: 100%;
-      border: none;
-      border-bottom: 1px solid lightblue;
-      text-align: center;
-      line-height: 4em;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+      .textsearch {
+        width: 70%;
+        border: none;
+        border-bottom: 5px solid $dark;
+        text-align: right;
+        line-height: 4em;
+      }
+      .link-like-button {
+        width: 20%;
+        border: none;
+        background: transparent;
+        border-bottom: 5px solid $dark;
+      }
     }
-    .link-like-button {
-      border: none;
-      background: transparent;
+
+      .filter-collapse {
+
+        .filter-section {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: flex-end;
+          justify-content: flex-end;
+          padding: 10px 0 10px 0;
+          border-bottom: 5px solid $dark;
+        }
+        .special-needs-butt {
+          border-radius: 0;
+          background-color: white;
+          color: black; 
+        }
+      }
     }
   }
-}
+
+
 //--------------ItemCard--------------
+@keyframes fade {
+  from {opacity: 1}
+  to {opacity: 0.5}
+}
+
 .ItemCard {
-  width: 40vw;
-  height: 40vw;
+  width: 39vw;
+  height: 39vw;
   overflow: hidden;
-  margin: 10px;
+  margin-bottom: 2vw;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+}
+.ItemCard:hover {
+  animation: fade 0.8s forwards;
 }
 //--------------ItemDetail--------------
 .ItemDetail {
@@ -180,6 +319,6 @@ $primary: rgb(151, 151, 245);
 }
 //--------------AddItem--------------
 .AddItem {
-
+  border: 1px solid red;
 }
 //--------------OOTD--------------

@@ -34,7 +34,7 @@ class ItemCard extends Component {
     const publicId = this.props.item.pictureUrl.substring(this.props.item.pictureUrl.indexOf("darling-pics/"))
     return (
       <div className="ItemCard">
-        <Image cloudName="niconek" publicId={publicId} onClick={(e) => this.props.handleOutfit(this.props.item._id)}>
+        <Image cloudName="dbsepqxws" publicId={publicId} onClick={(e) => this.props.handleOutfit(this.props.item._id)}>
           <Transformation width="500" gravity="auto:0" crop="fill" effect="art:fes" />
         </Image>
       </div>
