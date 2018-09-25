@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Enable authentication using session + passport
 app.use(session({
@@ -49,6 +49,8 @@ require('./passport')(app);
 app.use('/api', require('./routes'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/closet', require('./routes/closet'));
+// app.use('/api/ootd', require('./routes/ootd'));
+app.use('/api/items', require('./routes/items'));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use('/api/*', (req, res, next) => {
@@ -59,7 +61,7 @@ app.use('/api/*', (req, res, next) => {
 
 // For any other routes, redirect to the index.html file of React
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 // Error handler

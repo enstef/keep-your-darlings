@@ -35,10 +35,12 @@ class SelectOutfit extends Component {
       // const brands = [...new Set(this.state.items.map(item => item.brand))]
       <div className="Closet">
 
-        <h2>My Closet</h2>
+        <h2>Select the darlings you are wearing today. Choose wisely.</h2>
         <div className="item-list">
           {this.state.items.map(item => (
-            <ItemCard key={item._id} item={item} handleOutfit={this.props.handleOutfit} />
+            <button onClick={e => this.props.onAdd(e, item)}>
+              <ItemCard key={item._id} item={item} />
+            </button>
           ))}
         </div>
 
@@ -71,8 +73,6 @@ class SelectOutfit extends Component {
 }
 
 export default SelectOutfit;
-
-
 
 /*
 // /src/containers/blogPosts/update.js
@@ -118,33 +118,4 @@ const Update = React.createClass ({
 });
 
 export default Update;
-*/
-
-/*
-class Test extends React.Component {
-  constructor(props) {
-    super(props);
-    this.btnTapped = this.btnTapped.bind(this);
-  }
-  btnTapped() {
-    console.log('tapped');
-  }
-  render() {
-
-    return (
-      <div>
-        {
-          this.props.stations.map((station, index) => {
-        return <div key={index} onClick={this.btnTapped}>{station}</div>
-      })
-        }
-        </div>
-
-    )
-  }
-}
-
-var cards = ["amazon", "aeo", "aerie", "barnes", "bloomingdales", "bbw", "bestbuy", "regal", "cvs", "ebay", "gyft", "itunes", "jcp", "panera", "staples", "walmart", "target", "sephora", "walgreens", "starbucks"];
-
-ReactDOM.render(<Test stations={cards} />, document.getElementById('test-div'));
 */

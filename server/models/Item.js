@@ -13,7 +13,18 @@ const itemSchema = new Schema({
   brand: String,
   boughtOn: Date,
   price: Number,
-  wornOn: [Date],
+  wornOn: [{
+    type: String,
+    validate: {
+      validator: (v) => {
+        return (new Date(v)).toString() !== "Invalid Date"
+          && v.length === 10
+          && v[4] === "-"
+          && v[7] === "-"
+      },
+      message: "Invalid Date, should be like 'YYYY-MM-DD'"
+    }
+  }],
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
