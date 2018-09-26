@@ -102,13 +102,12 @@ export default {
       .catch(errHandler);
   },
 
-  // createOutfit(data) {
-  //   console.log("DATA in api -->", data)
-  //   return service
-  //     .post('/ootd', data)
-  //     .then(res => res.data)
-  //     .catch(errHandler)
-  // },
+  createOutfit(itemId, date) {
+    return service
+      .post(`/items/${itemId}/wornOn`, date)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
 
   // updateItemWithDate(data) {
   //   console.log("date also in api -->", data)

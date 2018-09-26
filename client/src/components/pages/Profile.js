@@ -26,7 +26,7 @@ class Profile extends Component {
     let randomPhrase = phrases[Math.floor(Math.random() * phrases.length)]
     return (
       <div className="Profile onepage">
-        <h1>{this.state.user.username}s closet</h1>
+        <h1>{this.state.user.username}'s closet</h1>
         <p className="random">{randomPhrase}</p>
 
         <p>Your top 3 Darlings</p>

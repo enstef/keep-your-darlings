@@ -34,7 +34,7 @@ class AddItem extends Component {
   //   // let path = `/closet/item/` + id;
   //   // let path = `/item/${this.props.match.params.id}`;
   // }
-  
+
   handleFileUpload(e) {
     console.log(e.target.files[0])
     this.setState({
@@ -95,7 +95,7 @@ class AddItem extends Component {
 
   render() {
     const seasons = ["Spring", "Summer", "Autmn", "Winter"]
-    const colors = ["Black", "White", "Grey", "Red", "Pink", "Yellow", "Blue", "Green", "Brown", "Mixed", "Metallic"]
+    const colors = ["Black", "White", "Grey", "Red", "Pink", "Orange", "Yellow", "Purple", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     return (
       <div className="onepage">
 
@@ -150,7 +150,7 @@ class AddItem extends Component {
             <button type="submit">Add New Item</button>
           </form>
         </div>
-         <Link to="/closet">
+        <Link to="/closet">
           <button className="closeter">Back</button>
         </Link>
 
