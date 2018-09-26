@@ -40,6 +40,8 @@ class Profile extends Component {
         <Link to="/ootd">OOTD</Link> <br />
         <Link to="/closet">Closet</Link> <br />
         <Link to="/history">Outfit History</Link>
+
+
       </div>
     );
   }
