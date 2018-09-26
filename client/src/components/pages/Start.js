@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from "react-router-dom"
 import api from "../../api"
+import logo from "../../images/logo-plain.svg"
 
 class Start extends Component {
   // constructor(props) {
@@ -15,12 +16,9 @@ class Start extends Component {
     else {
       return (
         <div className="Start onepage">
-          <div className="">
-            <h1>Keep Your Darlings</h1>
-            <p>We want to help you get organized and save money and stuff</p>
-            <p>Not yet a member?</p>
-            <Link to="/signin">Start</Link>
-          </div>
+          <img className="logo" src={logo} alt="logo" />
+          <p className="welcome">We want to help you get organized and save money and stuff. Also we want to help you get organized and save money and stuff. Also we want to help you get organized and save money and stuff.</p>
+          <Link className="standard-link" to="/signin">Start</Link>
         </div>
       );
     }

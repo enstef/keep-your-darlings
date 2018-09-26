@@ -15,13 +15,13 @@ class Profile extends Component {
   render() {
     const phrases = [
       "Darling, don't ever be too shy to dance your heart out.",
-      "Don't be like the rest of them darling.",
-      "Oh darling, go buy a personality.",
+      "Don't be like the rest of them Darling.",
+      "Oh Darling, go buy a personality.",
       "Darling, shine. That's all.",
-      "Time will teach you why, darling.",
+      "Time will teach you why, Darling.",
       "Darling, I'm a nightmare dressed like a daydream.",
       "Darling, a beautiful thing is never perfect.",
-      "Life is tough, my darling, but so are you."
+      "Life is tough, my Darling, but so are you."
     ]
     let randomPhrase = phrases[Math.floor(Math.random() * phrases.length)]
     return (
@@ -37,8 +37,8 @@ class Profile extends Component {
         {this.state.items.sort((a, b) => a.wornOn.length - b.wornOn.length).slice(0,3).map((item, i) => {
           <ItemCard item={item} key={i} />
         })} */}
-        <Link to="/ootd">OOTD</Link> <br />
-        <Link to="/closet">Closet</Link>
+        <Link className="standard-link" to="/ootd">OOTD</Link> <br />
+        <Link className="standard-link" to="/closet">Closet</Link>
       </div>
     );
   }
