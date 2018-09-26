@@ -6326,7 +6326,8 @@ body {
   overflow-y: overlay; }
 
 h1 {
-  font-family: 'Rozha One', serif; }
+  font-family: 'Rozha One', serif;
+  padding: 30px 15px; }
 
 .hidden {
   display: none; }
@@ -6581,3 +6582,15 @@ h1 {
 
 .AddItem {
   border: 1px solid red; }
+
+.Ootd .outfit {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 15px; }
+
+.History .herstorypic {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 15px; }

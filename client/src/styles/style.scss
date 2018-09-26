@@ -29,6 +29,7 @@ body {
 
 h1 {
   font-family: 'Rozha One', serif;
+  padding: 30px 15px;
 }
 
 .hidden {
@@ -384,3 +385,21 @@ h1 {
 }
 
 //--------------OOTD--------------
+.Ootd {
+  .outfit {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 15px;
+  }
+}
+
+//--------------History---------------
+.History {
+  .herstorypic {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 15px;
+  }
+}

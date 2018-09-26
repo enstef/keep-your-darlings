@@ -66,16 +66,17 @@ class Ootd extends Component {
         <p>What are you wearing today Darling? Keep track and try out new combinations from time to time.<br />
           Life is to short to be boring, be daring instead!</p>
         <p>Date: <input type="date" name="ootdDate" value={this.state.wornOn} onChange={this.handleDate.bind(this)} /></p>
-        {this.state.outfit.map((item, i) => (
-          <div key={i}>
-            <h5>{item.name}</h5>
-            <img src={item.pictureUrl} alt="pic" height="50" width="50" />
-            {/* <Image cloudName="niconek" publicId={publicId}>
+        <div className="outfit">
+          {this.state.outfit.map((item, i) => (
+            <div key={i}>
+              {/* <h5>{item.name}</h5> */}
+              <img src={item.pictureUrl} alt="pic" height="70" width="70" /> <br />
+              {/* <Image cloudName="niconek" publicId={publicId}>
               <Transformation width="500" gravity="auto:0" crop="fill" effect="art:fes" />
             </Image> */}
-          </div>
-        ))}
-
+            </div>
+          ))}
+        </div>
         <Link to="/closet">
           <Button onClick={this.handleSubmit} className="postOutfit">Thats my outfit for today!</Button>
         </Link>

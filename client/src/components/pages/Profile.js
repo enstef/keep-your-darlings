@@ -38,7 +38,10 @@ class Profile extends Component {
           <ItemCard item={item} key={i} />
         })}
         <Link to="/ootd">OOTD</Link> <br />
-        <Link to="/closet">Closet</Link>
+        <Link to="/closet">Closet</Link> <br />
+        <Link to="/history">Outfit History</Link>
+
+
       </div>
     );
   }
