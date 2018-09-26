@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom"
 import api from '../../api';
 import { UncontrolledCollapse, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import add from "../../images/add.svg"
 
 import ItemCard from "./ItemCard"
 
@@ -125,7 +126,7 @@ class Closet extends Component {
         </div>
 
         <Link to="/add-item">
-          <button className="adder">Add</button>
+          <img className="adder" src={add} alt="add" />
         </Link>
       </div>
     );

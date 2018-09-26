@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import api from '../../api'
 import { Image, Transformation } from 'cloudinary-react';
+import back from "../../images/back.svg"
+import CalendarHeatmap from "react-calendar-heatmap"
+import 'react-calendar-heatmap/dist/styles.css';
 
 class ItemDetail extends Component {
   constructor(props) {
@@ -53,9 +56,18 @@ class ItemDetail extends Component {
           <p>{this.state.item.color}</p>
           <p>{this.state.item.boughtOn}</p>
           <p>{this.state.item.price}</p>
-          <p>worn: {this.state.item.wornOn}</p>
 
-          {/* TODO: MAKE NICE INFOGRAPHICS */}
+          <CalendarHeatmap
+            startDate={Date.now() - 365}
+            endDate={Date.now()}
+            values={this.state.item.wornOn}
+            classForValue={(value) => {
+              if (!value) {
+                return 'color-empty';
+              }
+              return `color-scale-${value.count}`;
+            }}
+          />
 
           <button onClick={this.initiateDelete}>Delete</button>
 
@@ -66,7 +78,7 @@ class ItemDetail extends Component {
           </div>
 
           <Link to="/closet">
-            <button className="closeter">Back</button>
+            <img className="adder" src={back} alt="back" />
           </Link>
         </div>
       )

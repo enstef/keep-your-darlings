@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import api from '../../api';
-// import {
-//   Container, Col, Form,
-//   FormGroup, Label, Input,
-//   Button,
-// } from 'reactstrap';
-
+import back from "../../images/back.svg"
 class AddItem extends Component {
   constructor(props) {
     super(props)
@@ -18,15 +13,18 @@ class AddItem extends Component {
       subcategory: "",
       season: "",
       color: "",
-      tags: "",
+      tags: "#",
       brand: "",
       boughtOn: "",
       price: "",
       _id: "",
+      //
+      uploaded: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFileUpload = this.handleFileUpload.bind(this)
+    this.handleHashtag = this.handleHashtag.bind(this)
     //this.routeChange = this.routeChange.bind(this)
   }
   // routeChange() {
@@ -38,13 +36,24 @@ class AddItem extends Component {
   handleFileUpload(e) {
     console.log(e.target.files[0])
     this.setState({
-      picture: e.target.files[0]
+      picture: e.target.files[0],
+      uploaded: true
     })
   }
   handleInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
+  }
+  
+  handleHashtag(e) {
+    const oldtags = this.state.tags
+    if (e.which === 32) {
+      e.preventDefault();
+      this.setState({
+        tags: oldtags + " #"
+      })
+    }
   }
 
   handleRequiredClick(e, category) {
@@ -97,61 +106,67 @@ class AddItem extends Component {
     const seasons = ["Spring", "Summer", "Autmn", "Winter"]
     const colors = ["Black", "White", "Grey", "Red", "Pink", "Orange", "Yellow", "Purple", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     return (
-      <div className="onepage">
+      <div className="AddItem">
+        <h1>A new Darling</h1>
+        <p>Got your hands on something pretty? Make an addition to your closet!</p>
 
-        <div className="AddItem">
-          <h1>Add Item</h1>
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
 
-          <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+          <div className="filter-section file-upload">
+            <button className={this.state.uploaded ? "butt active" : "butt"}>Upload a picture</button>
+            <input type="file" name="picture" onChange={this.handleFileUpload} />
+          </div>
 
-            <input type="file" name="picture" onChange={this.handleFileUpload} /> <br />
+          <p>Category</p>
+          <div className="filter-section">
+            {this.state.categories.map((category, i) => (
+              <button onClick={e => this.handleRequiredClick(e, category)} key={i} className={this.state._category === category ? "active butt" : "butt"}>{category.name}</button>
+            ))}
+          </div>
 
-            Category:
-          <div>
-              {this.state.categories.map((category, i) => (
-                <button onClick={e => this.handleRequiredClick(e, category)} key={i} className={this.state._category === category ? "active" : null}>{category.name}</button>
+          {this.state._category &&
+            <div className="filter-section">
+              {this.state._category.subcategories.map((subcategory, i) => (
+                <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active butt" : "butt"}>{subcategory}</button>
               ))}
             </div>
-            <br />
+          }
 
-            {this.state._category &&
-              <div>
-                {this.state._category.subcategories.map((subcategory, i) => (
-                  <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active" : null}>{subcategory}</button>
-                ))}
-              </div>
-            }
+          <p>Season</p>
+          <div className="filter-section">
+            {seasons.map((season, i) => (
+              <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active butt" : "butt"}>{season}</button>
+            ))}
+          </div>
 
-            Season:
-          <div>
-              {seasons.map((season, i) => (
-                <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active" : null}>{season}</button>
-              ))}
+          <p>Color</p>
+          <div className="filter-section">
+            {colors.map((color, i) => (
+              <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active butt" : "butt " + color}>{color}</button>
+            ))}
+          </div>
+
+          <p>Tags</p>
+          <textarea name="tags" value={this.state.tags} onChange={this.handleInputChange} onKeyDown={this.handleHashtag}/>
+          <p>Brand</p>
+          <input type="text" name="brand" value={this.state.brand} onChange={this.handleInputChange} />
+
+          <div className="numbers">
+            <div>
+              <p>Bought On</p>
+              <input type="date" name="boughtOn" value={this.state.boughtOn} onChange={this.handleInputChange} />
             </div>
-
-            Colors:
-          <div>
-              {colors.map((color, i) => (
-                <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active" : null}>{color}</button>
-              ))}
+            <div>
+              <p>Price</p>
+              <input type="number" name="price" min="0" value={this.state.price} onChange={this.handleInputChange} />
             </div>
+          </div>
 
-            Tags:
-          <textarea name="tags" value={this.state.tags} cols="30" rows="5" onChange={this.handleInputChange} /> <br />
-            Brand:
-          <input type="text" name="brand" value={this.state.brand} onChange={this.handleInputChange} /> <br />
+          <button className="butt" type="submit">Add New Item</button>
+        </form>
 
-
-            Bought On:
-          <input type="date" name="boughtOn" value={this.state.boughtOn} onChange={this.handleInputChange} /> <br />
-            Price:
-          <input type="number" name="price" value={this.state.price} onChange={this.handleInputChange} /> <br />
-
-            <button type="submit">Add New Item</button>
-          </form>
-        </div>
         <Link to="/closet">
-          <button className="closeter">Back</button>
+          <img className="adder" src={back} alt="back" />
         </Link>
 
       </div>

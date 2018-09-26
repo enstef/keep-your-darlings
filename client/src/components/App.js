@@ -11,6 +11,8 @@ import ItemDetail from './pages/ItemDetail';
 import Ootd from './pages/Ootd';
 import History from './pages/History';
 
+import menu from "../images/menu.svg"
+
 // import { library } from '@fortawesome/fontawesome-svg-core';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,9 +40,9 @@ class App extends Component {
       visible: !this.state.visible
     })
     api.logout()
-      .then(result => {
-
-      })
+    .then(result => {
+      window.location.reload()
+    })
   }
 
   handleNavLinkClick() {
@@ -64,14 +66,15 @@ class App extends Component {
     else {
       return (
         <div className="App">
-          <button className="navtoggler" onClick={this.showNav}>NAV</button>
+          <a onClick={this.showNav}>
+            <img className="navtoggler" src={menu} alt="menu"/>
+          </a>
           <nav className={this.state.firstLoad ? "navbar" : (this.state.visible ? "navbar slideOut" : "navbar slideIn")}>
-            <h1>Keep your darlings</h1>
-            <Link to="/profile" onClick={this.handleNavLinkClick}>Profile</Link>
+            <Link to="/profile" onClick={this.handleNavLinkClick}>Start</Link>
             <Link to="/closet" onClick={this.handleNavLinkClick}>Closet</Link>
             <Link to="/ootd" onClick={this.handleNavLinkClick}>OOTD</Link>
+            <Link className="logout" to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
             <Link to="/history" onClick={this.handleNavLinkClick}>Outfit History</Link>
-            <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
           </nav>
           <Switch>
             <Route exact path="/" component={Start} />
