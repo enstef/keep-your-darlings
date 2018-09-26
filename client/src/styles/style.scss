@@ -29,6 +29,7 @@ body {
 
 h1 {
   font-family: 'Rozha One', serif;
+  padding: 30px 15px;
 }
 
 .hidden {
@@ -267,20 +268,6 @@ h1 {
 }
 
 //--------------Profile--------------
-.Profile {
-  .onepage {
-    h1 {
-      font-size: 40vh;
-      letter-spacing: -3px;
-    }
-  }
-}
-
-.kyd {
-  font-size: 40vh;
-  letter-spacing: -80px;
-  padding: 20vh;
-}
 
 //--------------Closet--------------
 
@@ -398,3 +385,21 @@ h1 {
 }
 
 //--------------OOTD--------------
+.Ootd {
+  .outfit {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 15px;
+  }
+}
+
+//--------------History---------------
+.History {
+  .herstorypic {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 15px;
+  }
+}

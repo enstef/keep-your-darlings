@@ -116,4 +116,10 @@ export default {
   //     .then(res => res.data)
   //     .catch(errHandler)
   // }
+  getHistory() {
+    return service
+      .get('/history')
+      .then(res => res.data)
+      .catch(errHandler)
+  }
 };

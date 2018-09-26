@@ -9,6 +9,7 @@ import Signin from './pages/Signin';
 import Profile from './pages/Profile';
 import ItemDetail from './pages/ItemDetail';
 import Ootd from './pages/Ootd';
+import History from './pages/History';
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -37,9 +38,9 @@ class App extends Component {
       visible: !this.state.visible
     })
     api.logout()
-    .then(result => {
-      
-    })
+      .then(result => {
+
+      })
   }
 
   handleNavLinkClick() {
@@ -69,6 +70,7 @@ class App extends Component {
             <Link to="/profile" onClick={this.handleNavLinkClick}>Profile</Link>
             <Link to="/closet" onClick={this.handleNavLinkClick}>Closet</Link>
             <Link to="/ootd" onClick={this.handleNavLinkClick}>OOTD</Link>
+            <Link to="/history" onClick={this.handleNavLinkClick}>Outfit History</Link>
             <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
           </nav>
           <Switch>
@@ -78,6 +80,7 @@ class App extends Component {
             <Route exact path="/closet/item/:_id" component={ItemDetail} />
             <Route path="/add-item" component={AddItem} />
             <Route path="/ootd" component={Ootd} />
+            <Route path="/history" component={History} />
             <Route render={() => <Redirect to="/" />} />
           </Switch>
         </div>

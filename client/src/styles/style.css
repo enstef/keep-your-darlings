@@ -6326,7 +6326,8 @@ body {
   overflow-y: overlay; }
 
 h1 {
-  font-family: 'Rozha One', serif; }
+  font-family: 'Rozha One', serif;
+  padding: 30px 15px; }
 
 .hidden {
   display: none; }
@@ -6507,15 +6508,6 @@ h1 {
         width: 100%;
         margin-bottom: 10px; }
 
-.Profile .onepage h1 {
-  font-size: 40vh;
-  letter-spacing: -3px; }
-
-.kyd {
-  font-size: 40vh;
-  letter-spacing: -80px;
-  padding: 20vh; }
-
 .Closet .adder {
   position: fixed;
   bottom: 5vw;
@@ -6590,3 +6582,15 @@ h1 {
 
 .AddItem {
   border: 1px solid red; }
+
+.Ootd .outfit {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 15px; }
+
+.History .herstorypic {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 15px; }
