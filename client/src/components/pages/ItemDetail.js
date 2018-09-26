@@ -44,8 +44,8 @@ class ItemDetail extends Component {
         <div className="ItemDetail onepage">
           {/* <h1>Look, one of your Darlings!</h1> */}
           <div className="header">
-            <Image cloudName="dbsepqxws" publicId={publicId} >
-            <Transformation width="1000" gravity="auto:0" crop="fill" effect="art:fes" />
+            <Image cloudName="niconek" publicId={publicId} >
+              <Transformation width="1000" gravity="auto:0" crop="fill" effect="art:fes" />
             </Image>
           </div>
           <p>{this.state.item.tags}</p>
@@ -53,7 +53,7 @@ class ItemDetail extends Component {
           <p>{this.state.item.color}</p>
           <p>{this.state.item.boughtOn}</p>
           <p>{this.state.item.price}</p>
-          <p>{this.state.item.wornOn}</p>
+          <p>worn: {this.state.item.wornOn}</p>
 
           {/* TODO: MAKE NICE INFOGRAPHICS */}
 
