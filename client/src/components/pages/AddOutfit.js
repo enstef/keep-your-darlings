@@ -44,8 +44,8 @@ class SelectOutfit extends Component {
           ))}
         </div>
 
-        <Link to="/ootd">
-          <button className="adder"> Add </button>
+        <Link to="/profile">
+          <button className="adder"> back </button>
         </Link>
       </div>
     );
@@ -74,45 +74,45 @@ class SelectOutfit extends Component {
 
 export default SelectOutfit;
 
-/*
-// /src/containers/blogPosts/update.js
-
-import React from 'react';
-import Form from '../../components/form';
-import { fetchBlogPost, updateBlogPost } from '../../actions/blogPostActions';
-
+  /*
+  // /src/containers/blogPosts/update.js
+  
+  import React from 'react';
+  import Form from '../../components/form';
+import {fetchBlogPost, updateBlogPost } from '../../actions/blogPostActions';
+        
 const Update = React.createClass ({
 
-    getInitialState() {
+          getInitialState() {
         return {
-            blogPost: {}
+          blogPost: {}
         };
     },
 
     componentDidMount() {
-        fetchBlogPost(this.props.params.postId)
+          fetchBlogPost(this.props.params.postId)
             .then((data) => {
-                this.setState(state => {
-                    state.blogPost = data;
-                    return state;
-                });
+              this.setState(state => {
+                state.blogPost = data;
+                return state;
+              });
             })
             .catch((err) => {
-                console.error('err', err);
+              console.error('err', err);
             });
-    },
-
+        },
+    
     handleSubmit(data) {
-        updateBlogPost(this.state.blogPost.id, data);
-    },
-
+          updateBlogPost(this.state.blogPost.id, data);
+        },
+    
     render() {
         return (
             <div>
-                <Form onSubmit={this.handleSubmit}
-                      title={this.state.blogPost.title}
-                      body={this.state.blogPost.body}></Form>
-            </div>
+          <Form onSubmit={this.handleSubmit}
+            title={this.state.blogPost.title}
+            body={this.state.blogPost.body}></Form>
+        </div>
         );
     }
 });

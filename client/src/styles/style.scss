@@ -12,21 +12,19 @@ $dark: rgb(58, 58, 58);
 @import url('https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i|Rozha+One');
 
 
-
 //--------------General--------------
 *, button:focus {
   outline: 0;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: 'Karla', sans-serif;
   overflow-y: overlay;
-}
-.hidden {
-  display: none
 }
 .onepage {
   height: 100vh;
@@ -35,7 +33,9 @@ body {
 }
 h1 {
   font-family: 'Rozha One', serif;
+  padding: 30px 15px;
 }
+
 .standard-link {
   font-size: 1.5em;
   color: $dark;
@@ -57,55 +57,69 @@ a:hover {
 }
 .adder:hover {
   width: 86px;
+
+.hidden {
+  display: none
+
 }
+
 .butt {
   margin: 1px;
   padding: 10px;
   border: 1px solid $dark;
   background-color: white;
 }
+
 .butt:hover {
   color: white;
   background-color: $dark;
 }
+
 .active {
   color: white;
   background-color: $dark;
 }
+
 .Black {
   background-color: black;
   color: white;
 }
+
 .Grey {
   border: none;
   padding: 11px;
   background-color: grey;
   color: white;
 }
+
 .Red {
   border: none;
   padding: 11px;
   background-color: $red;
   color: white;
 }
+
 .Pink {
   border: none;
   padding: 11px;
   background-color: $rose;
   color: $dark;
 }
+
 .Orange {
   border: none;
   padding: 11px;
   color: $dark;
   background-color: $orange;
 }
+
 .Yellow {
   border: none;
   padding: 11px;
   background-color: rgb(252, 228, 125);
   color: $dark;
 }
+
 .Purple {
   border: none;
   padding: 11px;
@@ -113,49 +127,67 @@ a:hover {
 
   color: white;
 }
+
 .Blue {
   border: none;
   padding: 11px;
   background-color: rgb(98, 134, 211);
   color: white;
 }
+
 .Green {
   border: none;
   padding: 11px;
   background-color: rgb(153, 187, 90);
   color: white;
 }
+
 .Brown {
   border: none;
   padding: 11px;
   background-color: rgb(173, 140, 118);
   color: white;
 }
+
 .Mixed {
   border: none;
   padding: 11px;
   color: $dark;
   background-color: $light;
 }
+
 .Metallic {
   border: none;
   padding: 11px;
   color: $dark;
   background-color: $light;
 }
+  
 //--------------App--------------
 @keyframes slideIn {
-  from {margin-left: 0;}
-  to {margin-left: -50vw}
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: -50vw
+  }
 }
+
 @keyframes slideOut {
-  from {margin-left: -50vw}
-  to {margin-left: 0;}
+  from {
+    margin-left: -50vw
+  }
+
+  to {
+    margin-left: 0;
+  }
 }
 
 .slideIn {
   animation: slideIn 0.8s forwards;
 }
+
 .slideOut {
   animation: slideOut 0.8s forwards;
 }
@@ -206,6 +238,7 @@ a:hover {
     }
   }
 }
+
 //--------------Start--------------
 .Start {
   background: url("../images/start.svg") no-repeat top;
@@ -224,11 +257,13 @@ a:hover {
     width: 50vw;
   }
 }
+
 //--------------Signin--------------
 @keyframes slideRight {
   from {margin-left: 0;}
   to {margin-left: -100vw;}
 }
+
 @keyframes slideLeft {
   from {margin-left: -100vw;}
   to {margin-left: 0;}
@@ -237,6 +272,7 @@ a:hover {
 .slideRight {
   animation: slideRight 0.8s forwards;
 }
+
 .slideLeft {
   animation: slideLeft 0.8s forwards;
 }
@@ -255,10 +291,10 @@ a:hover {
     width: 100%;
 
     form {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    width: 60%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      width: 60%;
 
       input {
         padding: 10px;
@@ -301,9 +337,10 @@ a:hover {
   background-size: cover;
 }
 //--------------Closet--------------
+
 .Closet {
 
-  .item-list { 
+  .item-list {
     margin: 0 10vw 0 10vw;
     display: flex;
     flex-flow: row wrap;
@@ -314,7 +351,7 @@ a:hover {
 
   form {
 
-    margin: 0 10vw 0 10vw ;
+    margin: 0 10vw 0 10vw;
 
     .filter-bar {
       width: 100%;
@@ -329,6 +366,7 @@ a:hover {
         text-align: right;
         line-height: 4em;
       }
+
       .link-like-button {
         width: 20%;
         border: none;
@@ -337,30 +375,36 @@ a:hover {
       }
     }
 
-      .filter-collapse {
+    .filter-collapse {
 
-        .filter-section {
-          display: flex;
-          flex-flow: row wrap;
-          align-items: flex-end;
-          justify-content: flex-end;
-          padding: 10px 0 10px 0;
-          border-bottom: 5px solid $dark;
-        }
-        .special-needs-butt {
-          border-radius: 0;
-          background-color: white;
-          color: black; 
-        }
+      .filter-section {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 10px 0 10px 0;
+        border-bottom: 5px solid $dark;
+      }
+
+      .special-needs-butt {
+        border-radius: 0;
+        background-color: white;
+        color: black;
       }
     }
   }
+}
 
 
 //--------------ItemCard--------------
 @keyframes fade {
-  from {opacity: 1}
-  to {opacity: 0.5}
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0.5
+  }
 }
 
 .ItemCard {
@@ -369,15 +413,17 @@ a:hover {
   overflow: hidden;
   margin-bottom: 2vw;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
+
 .ItemCard:hover {
   animation: fade 0.8s forwards;
 }
+
 //--------------ItemDetail--------------
 .react-calendar-heatmap .color-scale-1 { fill: $red; }
 
@@ -394,6 +440,7 @@ a:hover {
     }
   }
 }
+
 //--------------AddItem--------------
 .AddItem {
   margin: 80px 10vw 80px 10vw;
@@ -448,4 +495,23 @@ a:hover {
     }
   }
 }
+
 //--------------OOTD--------------
+.Ootd {
+  .outfit {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 15px;
+  }
+}
+
+//--------------History---------------
+.History {
+  .herstorypic {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 15px;
+  }
+}

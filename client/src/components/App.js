@@ -9,6 +9,7 @@ import Signin from './pages/Signin';
 import Profile from './pages/Profile';
 import ItemDetail from './pages/ItemDetail';
 import Ootd from './pages/Ootd';
+import History from './pages/History';
 
 import menu from "../images/menu.svg"
 
@@ -73,6 +74,7 @@ class App extends Component {
             <Link to="/closet" onClick={this.handleNavLinkClick}>Closet</Link>
             <Link to="/ootd" onClick={this.handleNavLinkClick}>OOTD</Link>
             <Link className="logout" to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
+            <Link to="/history" onClick={this.handleNavLinkClick}>Outfit History</Link>
           </nav>
           <Switch>
             <Route exact path="/" component={Start} />
@@ -81,6 +83,7 @@ class App extends Component {
             <Route exact path="/closet/item/:_id" component={ItemDetail} />
             <Route path="/add-item" component={AddItem} />
             <Route path="/ootd" component={Ootd} />
+            <Route path="/history" component={History} />
             <Route render={() => <Redirect to="/" />} />
           </Switch>
         </div>
