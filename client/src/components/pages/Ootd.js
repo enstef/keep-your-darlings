@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import AddOutfit from "./AddOutfit";
 import api from '../../api';
 
@@ -10,6 +11,7 @@ class Ootd extends Component {
     this.state = {
       outfit: [],
       showComponent: false,
+      wornOn: ""
     }
     this._onAddOOTDClick = this._onAddOOTDClick.bind(this);
     this.handleAddOutfit = this.handleAddOutfit.bind(this);
@@ -20,6 +22,12 @@ class Ootd extends Component {
     this.setState({
       showComponent: true,
     });
+  }
+
+  handleDate(e) {
+    this.setState({
+      wornOn: e.target.value
+    })
   }
 
   handleAddOutfit(e, item) {
@@ -42,8 +50,13 @@ class Ootd extends Component {
   //e.target.element.class = "selectedOutfit"      OR in <ItemCard className={this.state._category === category ? "active" : null}/>
 
   handleSubmit() {
-    api.createOutfit(this.state.outfit)
-    //&& api.updateItemWithDate(this.state)
+    this.state.outfit.map(item => {
+      let date = { date: this.state.wornOn }
+      api.createOutfit(item._id, date)
+        .then(result => {
+          console.log(result)
+        })
+    })
   }
 
   render() {
@@ -52,7 +65,7 @@ class Ootd extends Component {
         <h1>OOTD</h1>
         <p>What are you wearing today Darling? Keep track and try out new combinations from time to time.<br />
           Life is to short to be boring, be daring instead!</p>
-        <p>Date: {new Date().toISOString().slice(0, 10)}</p>
+        <p>Date: <input type="date" name="ootdDate" value={this.state.wornOn} onChange={this.handleDate.bind(this)} /></p>
         {this.state.outfit.map((item, i) => (
           <div key={i}>
             <h5>{item.name}</h5>
@@ -62,7 +75,13 @@ class Ootd extends Component {
             </Image> */}
           </div>
         ))}
-        <Button onClick={this.handleSubmit} className="postOutfit">Thats my outfit for today!</Button>
+
+        <Link to="/closet">
+          <Button onClick={this.handleSubmit} className="postOutfit">Thats my outfit for today!</Button>
+        </Link>
+
+
+
         <Button onClick={this._onAddOOTDClick} className="adder">Dive in</Button>
 
         {this.state.showComponent && <AddOutfit onAdd={this.handleAddOutfit} />}

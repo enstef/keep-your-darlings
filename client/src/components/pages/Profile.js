@@ -23,10 +23,10 @@ class Profile extends Component {
       "Darling, a beautiful thing is never perfect.",
       "Life is tough, my darling, but so are you."
     ]
-    let randomPhrase = phrases[Math.floor(Math.random()*phrases.length)]
+    let randomPhrase = phrases[Math.floor(Math.random() * phrases.length)]
     return (
       <div className="Profile onepage">
-        <h1>{this.state.user.username}s closet</h1>
+        <h1>{this.state.user.username}'s closet</h1>
         <p className="random">{randomPhrase}</p>
         {/* TODO 
         <p>Your top 3 Darlings</p>
@@ -37,7 +37,7 @@ class Profile extends Component {
         {this.state.items.sort((a, b) => a.wornOn.length - b.wornOn.length).slice(0,3).map((item, i) => {
           <ItemCard item={item} key={i} />
         })} */}
-        <Link to="/ootd">OOTD</Link> <br/>
+        <Link to="/ootd">OOTD</Link> <br />
         <Link to="/closet">Closet</Link>
       </div>
     );
@@ -45,17 +45,17 @@ class Profile extends Component {
 
   componentDidMount() {
     api.getProfile()
-    .then(user => {
-      this.setState({
-        user: user
+      .then(user => {
+        this.setState({
+          user: user
+        })
       })
-    })
     api.getCloset()
-    .then(items => {
-      this.setState({
-        items: items
+      .then(items => {
+        this.setState({
+          items: items
+        })
       })
-    })
   }
 }
 
