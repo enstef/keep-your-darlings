@@ -39,7 +39,6 @@ class Profile extends Component {
         })}
         <Link to="/ootd">OOTD</Link> <br />
         <Link to="/closet">Closet</Link>
-        <h1 class="kyd">KYD</h1>
       </div>
     );
   }
