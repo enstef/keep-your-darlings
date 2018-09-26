@@ -12,131 +12,166 @@ $dark: rgb(58, 58, 58);
 @import url('https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i|Rozha+One');
 
 //--------------Fancy--------------
-*, button:focus {
+*,
+button:focus {
   outline: 0;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: 'Karla', sans-serif;
   overflow-y: overlay;
 }
+
 h1 {
   font-family: 'Rozha One', serif;
 }
+
 .hidden {
   display: none
 }
+
 .butt {
   margin: 1px;
   padding: 10px;
   border: 1px solid $dark;
 }
+
 .butt:hover {
   color: white;
   background-color: $dark;
 }
+
 .active {
   color: white;
   background-color: $dark;
 }
+
 .Black {
   background-color: black;
   color: white;
 }
+
 .Grey {
   border: none;
   padding: 11px;
   background-color: grey;
   color: white;
 }
+
 .Red {
   border: none;
   padding: 11px;
   background-color: rgb(212, 90, 90);
   color: white;
 }
+
 .Pink {
   border: none;
   padding: 11px;
   background-color: rgb(255, 221, 226);
   color: $dark;
 }
+
 .Orange {
   border: none;
   padding: 11px;
   background-color: rgb(245, 178, 90);
   color: $dark;
 }
+
 .Yellow {
   border: none;
   padding: 11px;
   background-color: rgb(252, 228, 125);
   color: $dark;
 }
+
 .Purple {
   border: none;
   padding: 11px;
   background-color: rgb(150, 108, 189);
   color: white;
 }
+
 .Blue {
   border: none;
   padding: 11px;
   background-color: rgb(98, 134, 211);
   color: white;
 }
+
 .Green {
   border: none;
   padding: 11px;
   background-color: rgb(153, 187, 90);
   color: white;
 }
+
 .Brown {
   border: none;
   padding: 11px;
   background-color: rgb(173, 140, 118);
   color: white;
 }
+
 .Mixed {
   border: none;
   padding: 11px;
   background-image: linear-gradient(to right, rgb(144, 201, 255), rgb(187, 90, 182), rgb(233, 231, 140), rgb(245, 178, 90));
   color: $dark;
 }
+
 .Metallic {
   border: none;
   padding: 11px;
   background-image: linear-gradient(to right, rgb(253, 222, 122), rgb(255, 255, 255), rgb(253, 222, 122));
   color: $dark;
 }
+
 //--------------General--------------
 .onepage {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
+
 .closeter {
   position: fixed;
   bottom: 5vw;
   right: 5vw;
   z-index: 1;
 }
+
 //--------------App--------------
 @keyframes slideIn {
-  from {margin-left: 0;}
-  to {margin-left: -50vw}
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: -50vw
+  }
 }
+
 @keyframes slideOut {
-  from {margin-left: -50vw}
-  to {margin-left: 0;}
+  from {
+    margin-left: -50vw
+  }
+
+  to {
+    margin-left: 0;
+  }
 }
 
 .slideIn {
   animation: slideIn 0.8s forwards;
 }
+
 .slideOut {
   animation: slideOut 0.8s forwards;
 }
@@ -159,11 +194,12 @@ h1 {
     flex-flow: column nowrap;
     align-items: flex-end;
     justify-content: center;
-    background: rgba(240,20,20, 0.5);
+    background: rgba(240, 20, 20, 0.5);
     margin-left: -50vw;
 
   }
 }
+
 //--------------Start--------------
 .Start {
   display: flex;
@@ -171,19 +207,32 @@ h1 {
   align-items: center;
   padding: 10vw;
 }
+
 //--------------Signin--------------
 @keyframes slideRight {
-  from {margin-left: 0;}
-  to {margin-left: -100vw}
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: -100vw
+  }
 }
+
 @keyframes slideLeft {
-  from {margin-left: -100vw}
-  to {margin-left: 0;}
+  from {
+    margin-left: -100vw
+  }
+
+  to {
+    margin-left: 0;
+  }
 }
 
 .slideRight {
   animation: slideRight 0.8s forwards;
 }
+
 .slideLeft {
   animation: slideLeft 0.8s forwards;
 }
@@ -202,10 +251,10 @@ h1 {
     width: 100%;
 
     form {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    width: 60%;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      width: 60%;
 
       input {
         padding: 10px;
@@ -218,7 +267,23 @@ h1 {
 }
 
 //--------------Profile--------------
+.Profile {
+  .onepage {
+    h1 {
+      font-size: 40vh;
+      letter-spacing: -3px;
+    }
+  }
+}
+
+.kyd {
+  font-size: 40vh;
+  letter-spacing: -80px;
+  padding: 20vh;
+}
+
 //--------------Closet--------------
+
 .Closet {
 
   .adder {
@@ -228,7 +293,7 @@ h1 {
     z-index: 1;
   }
 
-  .item-list { 
+  .item-list {
     margin: 0 10vw 0 10vw;
     display: flex;
     flex-flow: row wrap;
@@ -239,7 +304,7 @@ h1 {
 
   form {
 
-    margin: 0 10vw 0 10vw ;
+    margin: 0 10vw 0 10vw;
 
     .filter-bar {
       width: 100%;
@@ -254,6 +319,7 @@ h1 {
         text-align: right;
         line-height: 4em;
       }
+
       .link-like-button {
         width: 20%;
         border: none;
@@ -262,30 +328,36 @@ h1 {
       }
     }
 
-      .filter-collapse {
+    .filter-collapse {
 
-        .filter-section {
-          display: flex;
-          flex-flow: row wrap;
-          align-items: flex-end;
-          justify-content: flex-end;
-          padding: 10px 0 10px 0;
-          border-bottom: 5px solid $dark;
-        }
-        .special-needs-butt {
-          border-radius: 0;
-          background-color: white;
-          color: black; 
-        }
+      .filter-section {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 10px 0 10px 0;
+        border-bottom: 5px solid $dark;
+      }
+
+      .special-needs-butt {
+        border-radius: 0;
+        background-color: white;
+        color: black;
       }
     }
   }
+}
 
 
 //--------------ItemCard--------------
 @keyframes fade {
-  from {opacity: 1}
-  to {opacity: 0.5}
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0.5
+  }
 }
 
 .ItemCard {
@@ -294,15 +366,17 @@ h1 {
   overflow: hidden;
   margin-bottom: 2vw;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
+
 .ItemCard:hover {
   animation: fade 0.8s forwards;
 }
+
 //--------------ItemDetail--------------
 .ItemDetail {
   .header {
@@ -317,8 +391,10 @@ h1 {
     }
   }
 }
+
 //--------------AddItem--------------
 .AddItem {
   border: 1px solid red;
 }
+
 //--------------OOTD--------------
