@@ -6519,6 +6519,9 @@ a:hover {
         width: 40vw; } }
   .Start .welcome {
     width: 50vw; }
+    @media (min-width: 768px) {
+      .Start .welcome {
+        width: 20vw; } }
   .Start a {
     color: #FF931E;
     border-color: #FF931E; }
@@ -6599,7 +6602,7 @@ a:hover {
     margin-top: 40px;
     width: 100%;
     display: flex;
-    flex-flow: row  nowrap;
+    flex-flow: row nowrap;
     justify-content: center; }
     .Profile .favorites div {
       width: 100px;
