@@ -2,7 +2,7 @@
 $lila: #662E8C;
 $orange: #FF931E;
 $rose: #EDB0C9;
-$red: #6B3138;
+$red: rgb(153, 72, 81);
 // $warning
 // $danger
 $light: #F7EADE;
@@ -57,10 +57,10 @@ a:hover {
 }
 .adder:hover {
   width: 86px;
+}
 
 .hidden {
   display: none
-
 }
 
 .butt {
@@ -165,23 +165,13 @@ a:hover {
   
 //--------------App--------------
 @keyframes slideIn {
-  from {
-    margin-left: 0;
-  }
-
-  to {
-    margin-left: -50vw
-  }
+  from {margin-left: 0}
+  to {margin-left: -50vw}
 }
 
 @keyframes slideOut {
-  from {
-    margin-left: -50vw
-  }
-
-  to {
-    margin-left: 0;
-  }
+  from {margin-left: -50vw}
+  to {margin-left: 0}
 }
 
 .slideIn {
@@ -255,6 +245,10 @@ a:hover {
   }
   .welcome {
     width: 50vw;
+  }
+  a {
+    color: $orange;
+    border-color: $orange;
   }
 }
 
@@ -398,13 +392,8 @@ a:hover {
 
 //--------------ItemCard--------------
 @keyframes fade {
-  from {
-    opacity: 1
-  }
-
-  to {
-    opacity: 0.5
-  }
+  from {opacity: 1}
+  to {opacity: 0.5}
 }
 
 .ItemCard {
@@ -425,9 +414,12 @@ a:hover {
 }
 
 //--------------ItemDetail--------------
-.react-calendar-heatmap .color-scale-1 { fill: $red; }
+.react-calendar-heatmap .color-scale-undefined {fill: $red}
+.react-calendar-heatmap .color-empty {fill: $light}
 
 .ItemDetail {
+  text-align: left;
+
   .header {
     width: 100vw;
     height: 50vh;
@@ -439,11 +431,32 @@ a:hover {
       object-fit: cover;
     }
   }
+  .statistics {
+    margin: 20px 10vw 0 10vw;
+    
+    .cost {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+  }
+
+  .delete-message {
+    width: 100vw;
+    height: 100vh;
+    background-color: $pink;
+    opacity: 0.5;
+  }
 }
 
 //--------------AddItem--------------
 .AddItem {
-  margin: 80px 10vw 80px 10vw;
+  margin: 50px 10vw 80px 10vw;
+  position: absolute;
+  z-index: -1;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 
   form {
     width: 100%;
@@ -460,9 +473,9 @@ a:hover {
     }
 
     .file-upload {
-      position: relative;
       overflow: hidden;
       display: inline-block;
+      position: relative;
 
       input {
         position: absolute;
@@ -497,12 +510,55 @@ a:hover {
 }
 
 //--------------OOTD--------------
+.scroll {
+  width: 100vw;
+  height: auto;
+}
+
 .Ootd {
+  width: 200vw;
+  display: flex;
+
+  .left {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10vw 0 10vw;
+
+    input {
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 0;
+      border: none;
+      background: $light;
+    }
+  }
+
   .outfit {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    padding: 15px;
+
+    .img-wrap {
+      width: 15vw;
+      height: 15vw;
+      overflow: hidden;
+      margin: 0 5px 2vw 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .right {
+    width: 100vw;
   }
 }
 
