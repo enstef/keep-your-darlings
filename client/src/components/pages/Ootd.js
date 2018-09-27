@@ -71,6 +71,7 @@ class Ootd extends Component {
 
   render() {
     return (
+
       <div className={this.state.right ? "scroll" : "onepage"}>
         <div className={this.state.right ? "Ootd slideRight" : "Ootd" && this.state.left ? "Ootd slideLeft" : "Ootd"}>
 

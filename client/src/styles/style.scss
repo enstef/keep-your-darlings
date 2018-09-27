@@ -13,7 +13,8 @@ $dark: rgb(58, 58, 58);
 
 
 //--------------General--------------
-*, button:focus {
+*,
+button:focus {
   outline: 0;
 }
 
@@ -26,11 +27,13 @@ body {
   font-family: 'Karla', sans-serif;
   overflow-y: overlay;
 }
+
 .onepage {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
+
 h1 {
   font-family: 'Rozha One', serif;
   padding: 30px 15px;
@@ -41,13 +44,16 @@ h1 {
   color: $dark;
   border-bottom: 5px solid $dark;
 }
+
 .standard-link:hover {
   color: $red;
   border-bottom: 5px solid $red;
 }
+
 a:hover {
   text-decoration: none;
 }
+
 .adder {
   width: 90px;
   position: fixed;
@@ -55,6 +61,7 @@ a:hover {
   right: 5vw;
   z-index: 1;
 }
+
 .adder:hover {
   width: 86px;
 }
@@ -162,7 +169,7 @@ a:hover {
   color: $dark;
   background-color: $light;
 }
-  
+
 //--------------App--------------
 @keyframes slideIn {
   from {margin-left: 0}
@@ -192,6 +199,7 @@ a:hover {
     left: 5vw;
     z-index: 1;
   }
+
   .navtoggler:hover {
     width: 76px;
   }
@@ -213,11 +221,13 @@ a:hover {
       color: $dark;
       line-height: 2em;
     }
+
     a:hover {
       text-decoration: none;
       color: $red;
       border-color: $red;
     }
+
     .logout {
       width: 80%;
       font-size: 1.5em;
@@ -238,11 +248,12 @@ a:hover {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  
+
   .logo {
     width: 60vw;
     margin-bottom: 30px;
   }
+
   .welcome {
     width: 50vw;
   }
@@ -254,13 +265,23 @@ a:hover {
 
 //--------------Signin--------------
 @keyframes slideRight {
-  from {margin-left: 0;}
-  to {margin-left: -100vw;}
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: -100vw;
+  }
 }
 
 @keyframes slideLeft {
-  from {margin-left: -100vw;}
-  to {margin-left: 0;}
+  from {
+    margin-left: -100vw;
+  }
+
+  to {
+    margin-left: 0;
+  }
 }
 
 .slideRight {
@@ -299,11 +320,13 @@ a:hover {
         border: none;
         background: $light;
       }
+
       .butt {
         margin-top: 10px;
       }
     }
   }
+
   .slider {
     margin-top: 5vh;
     display: flex;
@@ -312,10 +335,12 @@ a:hover {
     justify-content: center;
     padding: 20px;
   }
+
   .arrow {
     width: 80px;
     margin: 0 15px 0 15px;
   }
+
   .arrow:hover {
     cursor: pointer;
   }
@@ -329,10 +354,16 @@ a:hover {
   justify-content: center;
   background: url("../images/profile.svg") no-repeat bottom;
   background-size: cover;
+
+  .random {
+    padding: 15px;
+  }
 }
+
 //--------------Closet--------------
 
 .Closet {
+  margin-top: 15px;
 
   .item-list {
     margin: 0 10vw 0 10vw;
@@ -414,6 +445,7 @@ a:hover {
 }
 
 //--------------ItemDetail--------------
+
 .react-calendar-heatmap .color-scale-undefined {fill: $red}
 .react-calendar-heatmap .color-empty {fill: $light}
 
@@ -485,7 +517,9 @@ a:hover {
         font-size: 2em;
       }
     }
-    input, textarea {
+
+    input,
+    textarea {
       padding: 10px;
       text-align: center;
       width: 100%;
@@ -494,6 +528,7 @@ a:hover {
       border: none;
       background: $light;
     }
+
     .numbers {
       width: 100%;
       display: flex;
@@ -562,12 +597,17 @@ a:hover {
   }
 }
 
-//--------------History---------------
+//--------------History--------------- 
 .History {
-  .herstorypic {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    padding: 15px;
+  h1 {
+    margin-top: 65px;
   }
+
+  .herstory {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
 }

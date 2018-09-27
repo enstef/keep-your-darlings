@@ -6579,44 +6579,47 @@ a:hover {
   justify-content: center;
   background: url("../images/profile.svg") no-repeat bottom;
   background-size: cover; }
+  .Profile .random {
+    padding: 15px; }
 
-.Closet .item-list {
-  margin: 0 10vw 0 10vw;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px; }
-
-.Closet form {
-  margin: 0 10vw 0 10vw; }
-  .Closet form .filter-bar {
-    width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between; }
-    .Closet form .filter-bar .textsearch {
-      width: 70%;
-      border: none;
-      border-bottom: 5px solid #3a3a3a;
-      text-align: right;
-      line-height: 4em; }
-    .Closet form .filter-bar .link-like-button {
-      width: 20%;
-      border: none;
-      background: transparent;
-      border-bottom: 5px solid #3a3a3a; }
-  .Closet form .filter-collapse .filter-section {
+.Closet {
+  margin-top: 15px; }
+  .Closet .item-list {
+    margin: 0 10vw 0 10vw;
     display: flex;
     flex-flow: row wrap;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 10px 0 10px 0;
-    border-bottom: 5px solid #3a3a3a; }
-  .Closet form .filter-collapse .special-needs-butt {
-    border-radius: 0;
-    background-color: white;
-    color: black; }
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px; }
+  .Closet form {
+    margin: 0 10vw 0 10vw; }
+    .Closet form .filter-bar {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between; }
+      .Closet form .filter-bar .textsearch {
+        width: 70%;
+        border: none;
+        border-bottom: 5px solid #3a3a3a;
+        text-align: right;
+        line-height: 4em; }
+      .Closet form .filter-bar .link-like-button {
+        width: 20%;
+        border: none;
+        background: transparent;
+        border-bottom: 5px solid #3a3a3a; }
+    .Closet form .filter-collapse .filter-section {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 10px 0 10px 0;
+      border-bottom: 5px solid #3a3a3a; }
+    .Closet form .filter-collapse .special-needs-butt {
+      border-radius: 0;
+      background-color: white;
+      color: black; }
 
 @keyframes fade {
   from {
@@ -6693,7 +6696,8 @@ a:hover {
         top: 0;
         opacity: 0;
         font-size: 2em; }
-    .AddItem form input, .AddItem form textarea {
+    .AddItem form input,
+    .AddItem form textarea {
       padding: 10px;
       text-align: center;
       width: 100%;
@@ -6750,8 +6754,10 @@ a:hover {
   .Ootd .right {
     width: 100vw; }
 
-.History .herstorypic {
+.History h1 {
+  margin-top: 65px; }
+
+.History .herstory {
+  padding: 15px;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  padding: 15px; }
+  justify-content: space-between; }
