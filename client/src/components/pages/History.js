@@ -24,7 +24,6 @@ class History extends Component {
       <div className="History">
         <h1>Discover your past combinations!</h1>
         <p>Be original, don't wear the same things over and over again. It might be time to try out something new!</p>
-
         {this.state.history && Object.keys(this.state.history).map((ootd, i) => (
           <div className="herstory" key={i}>
             <p className="date">{moment(ootd).format("D.MM.YYYY")}</p>
@@ -42,6 +41,7 @@ class History extends Component {
             </div>
           </div>
         ))}
+
       </div>
     )
   }

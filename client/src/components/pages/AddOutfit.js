@@ -65,7 +65,7 @@ class SelectOutfit extends Component {
 
 
   render() {
-    const seasons = ["Spring", "Summer", "Autmn", "Winter"]
+    const seasons = ["Spring", "Summer", "Autumn", "Winter"]
     const colors = ["Black", "White", "Grey", "Red", "Pink", "Yellow", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     const brands = [...new Set(this.state.items.map(item => item.brand))]
     return (
