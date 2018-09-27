@@ -79,14 +79,14 @@ class Ootd extends Component {
             <h1>OOTD</h1>
             <p>What are you wearing today Darling? Keep track and try out new combinations from time to time.<br />
               Life is to short to be boring, be daring instead!</p>
-            <p>Date<input type="date" value={this.state.wornOn} onChange={this.handleDate}/></p>
+            <p>Date<input type="date" value={this.state.wornOn} onChange={this.handleDate} /></p>
 
             <div className="outfit">
               {this.state.outfit.map((item, i) => {
                 const publicId = item.pictureUrl.substring(item.pictureUrl.indexOf("darling-pics/"))
                 return (
                   <div className="img-wrap" key={i}>
-                    <Image cloudName="dbsepqxws" publicId={publicId}>
+                    <Image cloudName="niconek" publicId={publicId}>
                       <Transformation width="150" gravity="auto:0" crop="fill" effect="art:fes" />
                     </Image>
                   </div>

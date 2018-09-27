@@ -48,37 +48,37 @@ class ItemDetail extends Component {
       return (
         <div className="ItemDetail">
           <div className="header">
-            <Image cloudName="dbsepqxws" publicId={publicId} >
+            <Image cloudName="niconek" publicId={publicId} >
               <Transformation width="1000" gravity="auto:0" crop="fill" effect="art:fes" />
             </Image>
           </div>
 
           <div className="info">
             <div>
-            <CalendarHeatmap
-              startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
-              endDate={new Date()}
-              values={this.state.item.wornOn.map(date => ({ date: date }))}
-              classForValue={(value) => {
-                if (!value) {
-                  return 'color-empty';
-                }
-                return `color-scale-${value.count}`;
-              }}
-            />
+              <CalendarHeatmap
+                startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
+                endDate={new Date()}
+                values={this.state.item.wornOn.map(date => ({ date: date }))}
+                classForValue={(value) => {
+                  if (!value) {
+                    return 'color-empty';
+                  }
+                  return `color-scale-${value.count}`;
+                }}
+              />
 
-            <div className="cost">
-              {this.state.item.boughtOn ? <p>Bought on {moment(this.state.item.boughtOn).format("DD.MM.YYYY")} {this.state.item.price ? <span>for {this.state.item.price}€</span> : null}</p> : null}
-              {this.state.item.price ? <p>Cost per wear: {Math.round(this.state.item.price / this.state.item.wornOn.length)}€</p> : null}
+              <div className="cost">
+                {this.state.item.boughtOn ? <p>Bought on {moment(this.state.item.boughtOn).format("DD.MM.YYYY")} {this.state.item.price ? <span>for {this.state.item.price}€</span> : null}</p> : null}
+                {this.state.item.price ? <p>Cost per wear: {Math.round(this.state.item.price / this.state.item.wornOn.length)}€</p> : null}
+              </div>
+              {this.state.item.tags ? <p className="tags">{this.state.item.tags}</p> : null}
+              <div className="subtags">
+                <button className="butt">{this.state.item.brand}</button>
+                <button className="butt">{this.state.item.season}</button>
+                <button className={"butt " + this.state.item.color}>{this.state.item.color}</button>
+              </div>
+              <button className="special-needs butt" onClick={this.initiateDelete}>Sort out…</button>
             </div>
-            {this.state.item.tags ? <p className="tags">{this.state.item.tags}</p> : null}
-            <div className="subtags">
-              <button className="butt">{this.state.item.brand}</button>
-              <button className="butt">{this.state.item.season}</button>
-              <button className={"butt " + this.state.item.color}>{this.state.item.color}</button>
-            </div>
-          <button className="special-needs butt" onClick={this.initiateDelete}>Sort out…</button>
-          </div>
 
           </div>
 
