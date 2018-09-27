@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./configs/database');
 const mongoose = require("mongoose");
 const Category = require("../models/Category");
 
@@ -16,7 +17,7 @@ mongoose
 let categories = [
   {
     name: "Clothing",
-    subcategories: ["Pants", "Jeans", "Shorts", "Tops", "T-Shirts", "Blouses", "Pullovers", "Sweaters", "Hoodies", "Cardigans", "Blazers", "Vests", "Jackets", "Coats", "Dresses", "Skirts", "Overalls", "Pyjamas"]
+    subcategories: ["Pants", "Jeans", "Shorts", "Tops", "T-Shirts", "Blouses", "Pullovers", "Sweaters", "Hoodies", "Cardigans", "Blazers", "Vests", "Jackets", "Coats", "Dresses", "Skirts", "Overalls", "Body", "Pyjamas"]
   },
   {
     name: "Shoes",
