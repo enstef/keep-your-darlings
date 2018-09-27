@@ -57,7 +57,7 @@ class Closet extends Component {
   }
 
   render() {
-    const seasons = ["Spring", "Summer", "Autmn", "Winter"]
+    const seasons = ["Spring", "Summer", "Autumn", "Winter"]
     const colors = ["Black", "White", "Grey", "Red", "Pink", "Orange", "Yellow", "Purple", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     const brands = [...new Set(this.state.items.map(item => item.brand))]
     return (
@@ -97,9 +97,9 @@ class Closet extends Component {
 
               <div className="filter-section">
                 <Dropdown direction="left" isOpen={this.state.btnDropleft} toggle={() => { this.setState({ btnDropleft: !this.state.btnDropleft }); }}>
-                  <DropdownToggle className="butt special-needs-butt"caret>Brand</DropdownToggle>
+                  <DropdownToggle className="butt special-needs-butt" caret>Brand</DropdownToggle>
                   <DropdownMenu>
-                  {brands.map((brand, i) => (
+                    {brands.map((brand, i) => (
                       <DropdownItem key={i}>{brand}</DropdownItem>
                     ))}
                   </DropdownMenu>

@@ -20,19 +20,19 @@ let categories = [
   },
   {
     name: "Shoes",
-    subcategories: ["Sneakers", "Boots", "Ankleboots", "Chelseaboots", "Overknees", "Loafers", "Brougues", "Flats", "Espadrilles", "Ballerinas", "Sandals", "Slippers", "Pumps", "Highheels", "Wedges", ]
+    subcategories: ["Sneakers", "Boots", "Ankleboots", "Chelseaboots", "Overknees", "Loafers", "Brougues", "Flats", "Espadrilles", "Ballerinas", "Sandals", "Slippers", "Pumps", "Highheels", "Wedges",]
   },
   {
     name: "Special",
     subcategories: ["Swimwear", "Sportswear", "Lingerie", "Costumes", "Formalwear", "Other"]
   },
   {
-    name: "Accessoires",
-    subcategories: ["Necklacees", "Rings", "Bracelets", "Earrings", "Watches", "Sunglasses", "Ties", "Scarves", "Hats", "Gloves", "Belts", "Other" ]
+    name: "Accessories",
+    subcategories: ["Necklacees", "Rings", "Bracelets", "Earrings", "Watches", "Sunglasses", "Ties", "Scarves", "Hats", "Gloves", "Belts", "Other"]
   },
   {
     name: "Bags",
-    subcategories: ["Backpacks", "Fannypacks", "Messengers", "Totes", "Satchels", "Bucketbags", "Clutches", "Duffelbags","Handbags", "Shoulderbags", "Weekenders", "Laptopbags", "Beachbags"]
+    subcategories: ["Backpacks", "Fannypacks", "Messengers", "Totes", "Satchels", "Bucketbags", "Clutches", "Duffelbags", "Handbags", "Shoulderbags", "Weekenders", "Laptopbags", "Beachbags"]
   }
 ]
 
