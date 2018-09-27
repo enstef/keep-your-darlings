@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./configs/database');
+require('../configs/database');
 const mongoose = require("mongoose");
 const Category = require("../models/Category");
 
