@@ -32,23 +32,25 @@ class History extends Component {
 
 
         <div className="History">
-          {this.state.history && Object.keys(this.state.history).map((ootd, index) => (
-            <div key={index}>
+          {this.state.history && Object.keys(this.state.history)
+            .sort((a, b) => a < b ? 1 : -1)
+            .map((ootd, index) => (
+              <div key={index}>
 
-              <h1>{ootd}</h1>
+                <h1>{ootd}</h1>
 
-              <div>
-                <div className="herstory"  >
-                  {this.state.history[ootd].items.map((item, i) => (
+                <div>
+                  <div className="herstory"  >
+                    {this.state.history[ootd].items.map((item, i) => (
 
-                    <img key={i} src={item.pictureUrl} alt="" style={{ width: "80px", height: "80px", marginRight: "15px" }} />
-                  ))
-                  }
+                      <img key={i} src={item.pictureUrl} alt="" style={{ width: "80px", height: "80px", marginRight: "15px" }} />
+                    ))
+                    }
+                  </div>
                 </div>
-              </div>
 
-            </div>
-          ))
+              </div>
+            ))
           }
         </div>
       </div>
