@@ -215,6 +215,13 @@ a:hover {
     background: $light;
     margin-left: -50vw;
 
+    @include media-breakpoint-up(md) {
+      width: 25vw;
+      margin-left: -25vw;
+    }
+
+    margin-left: -50vw;
+
     a {
       font-size: 1.5em;
       font-style: italic;
@@ -252,6 +259,10 @@ a:hover {
   .logo {
     width: 60vw;
     margin-bottom: 30px;
+
+    @include media-breakpoint-up(md) {
+      width: 40vw;
+    }
   }
 
   .welcome {
@@ -311,6 +322,10 @@ a:hover {
       align-items: center;
       width: 60%;
 
+      @include media-breakpoint-up(md) {
+        width: 40%;
+      }
+      
       input {
         padding: 10px;
         text-align: center;
@@ -356,14 +371,49 @@ a:hover {
   background-size: cover;
 
   .random {
-    padding: 15px;
+    margin: 0 20vw 40px 20vw;
+    font-style: italic;
+  }
+  .standard-link {
+    margin-bottom: 20px;
+  }
+  .favorites {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-flow: row  nowrap;
+    justify-content: center;
+
+    div {
+      width: 100px;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      margin: 0 10px;
+      
+      @include media-breakpoint-up(md) {
+        margin: 0 20px;
+      }
+
+      p {
+        cursor: pointer;
+      }
+    }
+
+    .ItemCard {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+    .ItemCard:hover {
+      display: block;
+    }
   }
 }
 
 //--------------Closet--------------
 
 .Closet {
-  margin-top: 15px;
 
   .item-list {
     margin: 0 10vw 0 10vw;
@@ -401,7 +451,13 @@ a:hover {
     }
 
     .filter-collapse {
-
+      
+      @include media-breakpoint-up(md) {
+        margin-left: 20vw;
+      }
+      @include media-breakpoint-up(lg) {
+        margin-left: 40vw;
+      }
       .filter-section {
         display: flex;
         flex-flow: row wrap;
@@ -420,7 +476,6 @@ a:hover {
   }
 }
 
-
 //--------------ItemCard--------------
 @keyframes fade {
   from {opacity: 1}
@@ -432,6 +487,13 @@ a:hover {
   height: 39vw;
   overflow: hidden;
   margin-bottom: 2vw;
+
+  @include media-breakpoint-up(md) {
+    width: 25vw;
+    height: 25vw;
+    overflow: hidden;
+    margin-bottom: 2vw;
+  }
 
   img {
     width: 100%;
@@ -451,11 +513,22 @@ a:hover {
 
 .ItemDetail {
   text-align: left;
+  
+  @include media-breakpoint-up(md) {
+    display: flex;
+    display: row nowrap;
+  }
 
   .header {
     width: 100vw;
-    height: 50vh;
+    height: 45vh;
     overflow: hidden;
+
+    @include media-breakpoint-up(md) {
+      width: 50vw;
+      height: 100vh;
+      overflow: hidden;
+    }
 
     img {
       width: 100%;
@@ -463,21 +536,62 @@ a:hover {
       object-fit: cover;
     }
   }
-  .statistics {
+  .info {
     margin: 20px 10vw 0 10vw;
+
+    @include media-breakpoint-up(md) {
+      margin: 0 5vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     
     .cost {
+      margin-top: 10px;
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between;
     }
+    .tags {
+      padding: 10px 0;
+      border-top: 5px solid $light;
+      border-bottom: 5px solid $light;
+    }
+    .subtags {
+      display: flex;
+      flex-flow: row nowrap;
+    }
   }
-
-  .delete-message {
+  .special-needs {
+    margin-top: 10px;
+  }
+  .delete-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    top: 45vh;
     width: 100vw;
-    height: 100vh;
-    background-color: $pink;
-    opacity: 0.5;
+    height: 55vh;
+    padding: 0 10vw;
+    text-align: center;
+    background: white;
+    position: fixed;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      left: 50vw;
+      width: 50vw;
+      height: 100vh;
+      padding: 0 10vw;
+      text-align: center;
+      background: white;
+      position: fixed;
+    }
   }
 }
 
@@ -485,10 +599,16 @@ a:hover {
 .AddItem {
   margin: 50px 10vw 80px 10vw;
   position: absolute;
+  left: 0;
+  right: 0;
   z-index: -1;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+
+  @include media-breakpoint-up(md) {
+    margin: 50px 20vw 80px 20vw;
+  }
 
   form {
     width: 100%;
@@ -585,6 +705,11 @@ a:hover {
       overflow: hidden;
       margin: 0 5px 2vw 5px;
 
+      @include media-breakpoint-up(md) {
+        width: 7vw;
+        height: 7vw;
+      }
+
       img {
         width: 100%;
         height: 100%;
@@ -599,15 +724,51 @@ a:hover {
 
 //--------------History--------------- 
 .History {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin: 0 10vw 0 10vw;
+
   h1 {
-    margin-top: 65px;
+    margin-top: 50px;
   }
 
   .herstory {
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    .date {
+      font-family: 'Rozha One', serif;
+      color: $light;
+      letter-spacing: 0.1em;
+      border-bottom: 5px solid $light;
+      width: fit-content;
+    }
+
+    .combination {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
+
+      .img-wrap {
+        width: 18vw;
+        height: 18vw;
+        overflow: hidden;
+        margin: 0 5px 2vw 5px;
+
+        @include media-breakpoint-up(md) {
+          width: 12vw;
+          height: 12vw;
+        }
+    
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
   }
-
-
 }

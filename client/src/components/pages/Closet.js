@@ -24,7 +24,6 @@ class Closet extends Component {
       btnDropleft: false,
     }
     this.handleTextsearch = this.handleTextsearch.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
   }
 
   handleTextsearch(e) {
@@ -48,12 +47,6 @@ class Closet extends Component {
         [e.target.name]: value
       })
     }
-  }
-
-  handleSelect(e) {
-    this.setState({
-      brand: e.target.value
-    })
   }
 
   render() {
@@ -99,8 +92,9 @@ class Closet extends Component {
                 <Dropdown direction="left" isOpen={this.state.btnDropleft} toggle={() => { this.setState({ btnDropleft: !this.state.btnDropleft }); }}>
                   <DropdownToggle className="butt special-needs-butt"caret>Brand</DropdownToggle>
                   <DropdownMenu>
+                    <button className="butt" name="brand" value="" onClick={e => this.handleOptionalClick(e, "")}>All</button>
                   {brands.map((brand, i) => (
-                      <DropdownItem key={i}>{brand}</DropdownItem>
+                      <button className="butt" name="brand" value={brand} onClick={e => this.handleOptionalClick(e, brand)} key={i}>{brand}</button>
                     ))}
                   </DropdownMenu>
                 </Dropdown>

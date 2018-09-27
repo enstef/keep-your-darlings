@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -6314,7 +6313,8 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
-*, button:focus {
+*,
+button:focus {
   outline: 0; }
 
 * {
@@ -6480,7 +6480,12 @@ a:hover {
     align-items: flex-end;
     justify-content: center;
     background: #F7EADE;
+    margin-left: -50vw;
     margin-left: -50vw; }
+    @media (min-width: 768px) {
+      .App .navbar {
+        width: 25vw;
+        margin-left: -25vw; } }
     .App .navbar a {
       font-size: 1.5em;
       font-style: italic;
@@ -6509,6 +6514,9 @@ a:hover {
   .Start .logo {
     width: 60vw;
     margin-bottom: 30px; }
+    @media (min-width: 768px) {
+      .Start .logo {
+        width: 40vw; } }
   .Start .welcome {
     width: 50vw; }
   .Start a {
@@ -6549,6 +6557,9 @@ a:hover {
       flex-flow: column nowrap;
       align-items: center;
       width: 60%; }
+      @media (min-width: 768px) {
+        .Signin div form {
+          width: 40%; } }
       .Signin div form input {
         padding: 10px;
         text-align: center;
@@ -6580,46 +6591,77 @@ a:hover {
   background: url("../images/profile.svg") no-repeat bottom;
   background-size: cover; }
   .Profile .random {
-    padding: 15px; }
+    margin: 0 20vw 40px 20vw;
+    font-style: italic; }
+  .Profile .standard-link {
+    margin-bottom: 20px; }
+  .Profile .favorites {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-flow: row  nowrap;
+    justify-content: center; }
+    .Profile .favorites div {
+      width: 100px;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      margin: 0 10px; }
+      @media (min-width: 768px) {
+        .Profile .favorites div {
+          margin: 0 20px; } }
+      .Profile .favorites div p {
+        cursor: pointer; }
+    .Profile .favorites .ItemCard {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px; }
+    .Profile .favorites .ItemCard:hover {
+      display: block; }
 
-.Closet {
-  margin-top: 15px; }
-  .Closet .item-list {
-    margin: 0 10vw 0 10vw;
+.Closet .item-list {
+  margin: 0 10vw 0 10vw;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px; }
+
+.Closet form {
+  margin: 0 10vw 0 10vw; }
+  .Closet form .filter-bar {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between; }
+    .Closet form .filter-bar .textsearch {
+      width: 70%;
+      border: none;
+      border-bottom: 5px solid #3a3a3a;
+      text-align: right;
+      line-height: 4em; }
+    .Closet form .filter-bar .link-like-button {
+      width: 20%;
+      border: none;
+      background: transparent;
+      border-bottom: 5px solid #3a3a3a; }
+  @media (min-width: 768px) {
+    .Closet form .filter-collapse {
+      margin-left: 20vw; } }
+  @media (min-width: 992px) {
+    .Closet form .filter-collapse {
+      margin-left: 40vw; } }
+  .Closet form .filter-collapse .filter-section {
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px; }
-  .Closet form {
-    margin: 0 10vw 0 10vw; }
-    .Closet form .filter-bar {
-      width: 100%;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between; }
-      .Closet form .filter-bar .textsearch {
-        width: 70%;
-        border: none;
-        border-bottom: 5px solid #3a3a3a;
-        text-align: right;
-        line-height: 4em; }
-      .Closet form .filter-bar .link-like-button {
-        width: 20%;
-        border: none;
-        background: transparent;
-        border-bottom: 5px solid #3a3a3a; }
-    .Closet form .filter-collapse .filter-section {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: flex-end;
-      justify-content: flex-end;
-      padding: 10px 0 10px 0;
-      border-bottom: 5px solid #3a3a3a; }
-    .Closet form .filter-collapse .special-needs-butt {
-      border-radius: 0;
-      background-color: white;
-      color: black; }
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 10px 0 10px 0;
+    border-bottom: 5px solid #3a3a3a; }
+  .Closet form .filter-collapse .special-needs-butt {
+    border-radius: 0;
+    background-color: white;
+    color: black; }
 
 @keyframes fade {
   from {
@@ -6632,6 +6674,12 @@ a:hover {
   height: 39vw;
   overflow: hidden;
   margin-bottom: 2vw; }
+  @media (min-width: 768px) {
+    .ItemCard {
+      width: 25vw;
+      height: 25vw;
+      overflow: hidden;
+      margin-bottom: 2vw; } }
   .ItemCard img {
     width: 100%;
     height: 100%;
@@ -6648,33 +6696,84 @@ a:hover {
 
 .ItemDetail {
   text-align: left; }
+  @media (min-width: 768px) {
+    .ItemDetail {
+      display: flex;
+      display: row nowrap; } }
   .ItemDetail .header {
     width: 100vw;
-    height: 50vh;
+    height: 45vh;
     overflow: hidden; }
+    @media (min-width: 768px) {
+      .ItemDetail .header {
+        width: 50vw;
+        height: 100vh;
+        overflow: hidden; } }
     .ItemDetail .header img {
       width: 100%;
       height: 100%;
       object-fit: cover; }
-  .ItemDetail .statistics {
+  .ItemDetail .info {
     margin: 20px 10vw 0 10vw; }
-    .ItemDetail .statistics .cost {
+    @media (min-width: 768px) {
+      .ItemDetail .info {
+        margin: 0 5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center; } }
+    .ItemDetail .info .cost {
+      margin-top: 10px;
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between; }
-  .ItemDetail .delete-message  {
+    .ItemDetail .info .tags {
+      padding: 10px 0;
+      border-top: 5px solid #F7EADE;
+      border-bottom: 5px solid #F7EADE; }
+    .ItemDetail .info .subtags {
+      display: flex;
+      flex-flow: row nowrap; }
+  .ItemDetail .special-needs {
+    margin-top: 10px; }
+  .ItemDetail .delete-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    top: 45vh;
     width: 100vw;
-    height: 100vh;
-    background-color: #e83e8c;
-    opacity: 0.5; }
+    height: 55vh;
+    padding: 0 10vw;
+    text-align: center;
+    background: white;
+    position: fixed; }
+    @media (min-width: 768px) {
+      .ItemDetail .delete-wrap {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 50vw;
+        width: 50vw;
+        height: 100vh;
+        padding: 0 10vw;
+        text-align: center;
+        background: white;
+        position: fixed; } }
 
 .AddItem {
   margin: 50px 10vw 80px 10vw;
   position: absolute;
+  left: 0;
+  right: 0;
   z-index: -1;
   display: flex;
   flex-flow: column nowrap;
   align-items: center; }
+  @media (min-width: 768px) {
+    .AddItem {
+      margin: 50px 20vw 80px 20vw; } }
   .AddItem form {
     width: 100%;
     display: flex;
@@ -6747,6 +6846,10 @@ a:hover {
       height: 15vw;
       overflow: hidden;
       margin: 0 5px 2vw 5px; }
+      @media (min-width: 768px) {
+        .Ootd .outfit .img-wrap {
+          width: 7vw;
+          height: 7vw; } }
       .Ootd .outfit .img-wrap img {
         width: 100%;
         height: 100%;
@@ -6754,10 +6857,38 @@ a:hover {
   .Ootd .right {
     width: 100vw; }
 
-.History h1 {
-  margin-top: 65px; }
-
-.History .herstory {
-  padding: 15px;
+.History {
   display: flex;
-  justify-content: space-between; }
+  flex-flow: column nowrap;
+  align-items: center;
+  margin: 0 10vw 0 10vw; }
+  .History h1 {
+    margin-top: 50px; }
+  .History .herstory {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px; }
+    .History .herstory .date {
+      font-family: 'Rozha One', serif;
+      color: #F7EADE;
+      letter-spacing: 0.1em;
+      border-bottom: 5px solid #F7EADE;
+      width: fit-content; }
+    .History .herstory .combination {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center; }
+      .History .herstory .combination .img-wrap {
+        width: 18vw;
+        height: 18vw;
+        overflow: hidden;
+        margin: 0 5px 2vw 5px; }
+        @media (min-width: 768px) {
+          .History .herstory .combination .img-wrap {
+            width: 12vw;
+            height: 12vw; } }
+        .History .herstory .combination .img-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
