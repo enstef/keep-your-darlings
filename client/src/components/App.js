@@ -73,8 +73,8 @@ class App extends Component {
             <Link to="/profile" onClick={this.handleNavLinkClick}>Start</Link>
             <Link to="/closet" onClick={this.handleNavLinkClick}>Closet</Link>
             <Link to="/ootd" onClick={this.handleNavLinkClick}>OOTD</Link>
-            <Link className="logout" to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
             <Link to="/history" onClick={this.handleNavLinkClick}>Outfit History</Link>
+            <Link className="logout" to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>
           </nav>
           <Switch>
             <Route exact path="/" component={Start} />

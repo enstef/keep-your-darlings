@@ -11,7 +11,18 @@ const itemSchema = new Schema({
   color: String,
   tags: String,
   brand: String,
-  boughtOn: Date,
+  boughtOn: {
+    type: String,
+    validate: {
+      validator: (v) => {
+        return (new Date(v)).toString() !== "Invalid Date"
+          && v.length === 10
+          && v[4] === "-"
+          && v[7] === "-"
+      },
+      message: "Invalid Date, should be like 'YYYY-MM-DD'"
+    }
+  },
   price: Number,
   wornOn: [{
     type: String,

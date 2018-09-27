@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../api'
-import ItemCard from './ItemCard';
+// import ItemCard from './ItemCard';
 
 class Profile extends Component {
   constructor(props) {
@@ -29,16 +29,16 @@ class Profile extends Component {
         <h1>{this.state.user.username}'s closet</h1>
         <p className="random">{randomPhrase}</p>
 
-        <p>Your top 3 Darlings</p>
+        {/* <p>Your top 3 Darlings</p>
         {this.state.items.sort((a, b) => b.wornOn.length - a.wornOn.length).slice(0, 3).map((item, i) => {
           <ItemCard item={item} key={i} />
         })}
         <p>Your least 3</p>
         {this.state.items.sort((a, b) => a.wornOn.length - b.wornOn.length).slice(0, 3).map((item, i) => {
           <ItemCard item={item} key={i} />
-        })}
+        })} */}
                                                                                             
-        <Link className="standard-link" to="/ootd">OOTD</Link> <br />
+        <Link className="standard-link" to="/ootd">OOTD</Link>
         <Link className="standard-link" to="/closet">Closet</Link>
         <Link className="standard-link" to="/history">Outfit History</Link>
 
