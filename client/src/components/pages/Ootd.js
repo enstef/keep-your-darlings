@@ -63,14 +63,14 @@ class Ootd extends Component {
     return (
       <div className="Ootd">
         <h1>OOTD</h1>
-        <p>What are you wearing today Darling? Keep track and try out new combinations from time to time.<br />
+        <p>What are you wearing today Darling? Keep track and try out new combinations from time to time.
           Life is to short to be boring, be daring instead!</p>
         <p>Date: <input type="date" name="ootdDate" value={this.state.wornOn} onChange={this.handleDate.bind(this)} /></p>
         <div className="outfit">
           {this.state.outfit.map((item, i) => (
             <div key={i}>
               {/* <h5>{item.name}</h5> */}
-              <img src={item.pictureUrl} alt="pic" height="70" width="70" /> <br />
+              < img src={item.pictureUrl} alt="pic" height="70" width="70" />
               {/* <Image cloudName="niconek" publicId={publicId}>
               <Transformation width="500" gravity="auto:0" crop="fill" effect="art:fes" />
             </Image> */}

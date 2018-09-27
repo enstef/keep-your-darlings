@@ -35,7 +35,8 @@ class SelectOutfit extends Component {
       // const brands = [...new Set(this.state.items.map(item => item.brand))]
       <div className="Closet">
 
-        <h2>Select the darlings you are wearing today. Choose wisely.</h2>
+        <p>Select the darlings you are wearing today. <br />
+          Choose wisely.</p>
         <div className="item-list">
           {this.state.items.map(item => (
             <button onClick={e => this.props.onAdd(e, item)}>
