@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import api from '../../api';
+import moment from "moment"
 import back from "../../images/back.svg"
+
 class AddItem extends Component {
   constructor(props) {
     super(props)
@@ -15,8 +17,8 @@ class AddItem extends Component {
       color: "",
       tags: "#",
       brand: "",
-      boughtOn: "",
-      price: "",
+      boughtOn: moment().format("YYYY-MM-D"),
+      price: 0,
       _id: "",
       //
       uploaded: false,
@@ -45,7 +47,7 @@ class AddItem extends Component {
       [e.target.name]: e.target.value
     })
   }
-  
+
   handleHashtag(e) {
     const oldtags = this.state.tags
     if (e.which === 32) {
@@ -106,70 +108,70 @@ class AddItem extends Component {
     const seasons = ["Spring", "Summer", "Autmn", "Winter"]
     const colors = ["Black", "White", "Grey", "Red", "Pink", "Orange", "Yellow", "Purple", "Blue", "Green", "Brown", "Mixed", "Metallic"]
     return (
-      <div className="AddItem">
-        <h1>A new Darling</h1>
-        <p>Got your hands on something pretty? Make an addition to your closet!</p>
+        <div className="AddItem">
+          <h1>A new Darling</h1>
+          <p>Got your hands on something pretty? Make an addition to your closet!</p>
 
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+          <form onSubmit={this.handleSubmit} encType="multipart/form-data">
 
-          <div className="filter-section file-upload">
-            <button className={this.state.uploaded ? "butt active" : "butt"}>Upload a picture</button>
-            <input type="file" name="picture" onChange={this.handleFileUpload} />
-          </div>
+            <div className="filter-section file-upload">
+              <button className={this.state.uploaded ? "butt active" : "butt"}>Upload a picture</button>
+              <input type="file" name="picture" onChange={this.handleFileUpload} />
+            </div>
 
-          <p>Category</p>
-          <div className="filter-section">
-            {this.state.categories.map((category, i) => (
-              <button onClick={e => this.handleRequiredClick(e, category)} key={i} className={this.state._category === category ? "active butt" : "butt"}>{category.name}</button>
-            ))}
-          </div>
-
-          {this.state._category &&
+            <p>Category</p>
             <div className="filter-section">
-              {this.state._category.subcategories.map((subcategory, i) => (
-                <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active butt" : "butt"}>{subcategory}</button>
+              {this.state.categories.map((category, i) => (
+                <button onClick={e => this.handleRequiredClick(e, category)} key={i} className={this.state._category === category ? "active butt" : "butt"}>{category.name}</button>
               ))}
             </div>
-          }
 
-          <p>Season</p>
-          <div className="filter-section">
-            {seasons.map((season, i) => (
-              <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active butt" : "butt"}>{season}</button>
-            ))}
-          </div>
+            {this.state._category &&
+              <div className="filter-section">
+                {this.state._category.subcategories.map((subcategory, i) => (
+                  <button name="subcategory" onClick={e => this.handleOptionalClick(e, subcategory)} key={i} className={this.state.subcategory === subcategory ? "active butt" : "butt"}>{subcategory}</button>
+                ))}
+              </div>
+            }
 
-          <p>Color</p>
-          <div className="filter-section">
-            {colors.map((color, i) => (
-              <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active butt" : "butt " + color}>{color}</button>
-            ))}
-          </div>
-
-          <p>Tags</p>
-          <textarea name="tags" value={this.state.tags} onChange={this.handleInputChange} onKeyDown={this.handleHashtag}/>
-          <p>Brand</p>
-          <input type="text" name="brand" value={this.state.brand} onChange={this.handleInputChange} />
-
-          <div className="numbers">
-            <div>
-              <p>Bought On</p>
-              <input type="date" name="boughtOn" value={this.state.boughtOn} onChange={this.handleInputChange} />
+            <p>Season</p>
+            <div className="filter-section">
+              {seasons.map((season, i) => (
+                <button name="season" onClick={e => this.handleOptionalClick(e, season)} key={i} className={this.state.season === season ? "active butt" : "butt"}>{season}</button>
+              ))}
             </div>
-            <div>
-              <p>Price</p>
-              <input type="number" name="price" min="0" value={this.state.price} onChange={this.handleInputChange} />
+
+            <p>Color</p>
+            <div className="filter-section">
+              {colors.map((color, i) => (
+                <button name="color" onClick={e => this.handleOptionalClick(e, color)} key={i} className={this.state.color === color ? "active butt" : "butt " + color}>{color}</button>
+              ))}
             </div>
-          </div>
 
-          <button className="butt" type="submit">Add New Item</button>
-        </form>
+            <p>Tags</p>
+            <textarea name="tags" value={this.state.tags} onChange={this.handleInputChange} onKeyDown={this.handleHashtag} />
+            <p>Brand</p>
+            <input type="text" name="brand" value={this.state.brand} onChange={this.handleInputChange} />
 
-        <Link to="/closet">
-          <img className="adder" src={back} alt="back" />
-        </Link>
+            <div className="numbers">
+              <div>
+                <p>Bought On</p>
+                <input type="date" name="boughtOn" value={this.state.boughtOn} onChange={this.handleInputChange} />
+              </div>
+              <div>
+                <p>Price</p>
+                <input type="number" name="price" min="0" value={this.state.price} onChange={this.handleInputChange} />
+              </div>
+            </div>
 
-      </div>
+            <button className="butt" type="submit">Add New Item</button>
+          </form>
+
+          <Link to="/closet">
+            <img className="adder" src={back} alt="back" />
+          </Link>
+
+        </div>
     );
   }
 

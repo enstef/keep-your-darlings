@@ -21,8 +21,9 @@ class History extends Component {
   }
   render() {
     return (
-      <div className="History onepage">
-        <h1>Discover your past combinations!</h1>
+
+      <div className="History">
+        <h1>Slide to discover your past combinations!</h1>
         <p>Be original, don't wear the same things over and over again. It might be time to try out something new!</p>
         <Link to="/profile">
           <Button className="profiler">Back</Button>
@@ -31,7 +32,6 @@ class History extends Component {
 
 
         <div className="History">
-
           {this.state.history && Object.keys(this.state.history).map((ootd, index) => (
             <div key={index}>
 
@@ -46,6 +46,7 @@ class History extends Component {
                   }
                 </div>
               </div>
+
             </div>
           ))
           }
