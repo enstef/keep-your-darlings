@@ -15,7 +15,7 @@ class Ootd extends Component {
     this.state = {
       outfit: [],
       showComponent: false,
-      wornOn: moment().format("YYYY-MM-D"),
+      wornOn: moment().format("YYYY-MM-DD"),
       //
       right: false,
       left: "",

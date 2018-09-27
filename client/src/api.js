@@ -70,9 +70,9 @@ export default {
       .catch(errHandler)
   },
 
-  deleteItem() {
+  deleteItem(id) {
     return service
-      .get("/closet/items/")
+      .delete("/closet/items/"+id)
       .then(res => res.data)
       .catch(errHandler)
   },

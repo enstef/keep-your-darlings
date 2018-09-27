@@ -52,6 +52,17 @@ class SelectOutfit extends Component {
     })
   }
 
+  handlePick(e, item) {
+    this.props.onAdd(e, item)
+
+    this.setState({
+      items: this.state.items.map((curItem, i) => ({
+        ...curItem, 
+        isSelected: curItem.isSelected ^ item._id.toString() === curItem._id.toString() 
+      }))
+    })
+  }
+
 
   render() {
     const seasons = ["Spring", "Summer", "Autumn", "Winter"]
@@ -95,9 +106,10 @@ class SelectOutfit extends Component {
               <div className="filter-section">
                 <Dropdown direction="left" isOpen={this.state.btnDropleft} toggle={() => { this.setState({ btnDropleft: !this.state.btnDropleft }); }}>
                   <DropdownToggle className="butt special-needs-butt" caret>Brand</DropdownToggle>
-                  <DropdownMenu>
+                  <DropdownMenu className="drop-it-like-its-hot">
+                  <button className="butt" name="brand" value="" onClick={e => this.handleOptionalClick(e, "")}>All</button>
                     {brands.map((brand, i) => (
-                      <DropdownItem key={i}>{brand}</DropdownItem>
+                      <button className="butt" name="brand" value={brand} onClick={e => this.handleOptionalClick(e, brand)} key={i}>{brand}</button>
                     ))}
                   </DropdownMenu>
                 </Dropdown>
@@ -118,8 +130,8 @@ class SelectOutfit extends Component {
               && (this.state.brand ? (item.brand === this.state.brand) : item)
             )
           }).map((item, i) => (
-            <a onClick={e => this.props.onAdd(e, item)} key={i}>
-              <ItemCard key={item._id} item={item} />
+            <a onClick={e => this.handlePick(e, item)} key={i} style={{opacity: item.isSelected ? "0.5" : ""}}>
+              <ItemCard id={item._id} item={item}   />
             </a>
           ))}
         </div>
