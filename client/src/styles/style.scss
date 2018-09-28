@@ -172,13 +172,23 @@ a:hover {
 
 //--------------App--------------
 @keyframes slideIn {
-  from {margin-left: 0}
-  to {margin-left: -50vw}
+  from {
+    margin-left: 0
+  }
+
+  to {
+    margin-left: -50vw
+  }
 }
 
 @keyframes slideOut {
-  from {margin-left: -50vw}
-  to {margin-left: 0}
+  from {
+    margin-left: -50vw
+  }
+
+  to {
+    margin-left: 0
+  }
 }
 
 .slideIn {
@@ -267,7 +277,12 @@ a:hover {
 
   .welcome {
     width: 50vw;
+
+    @include media-breakpoint-up(md) {
+      width: 20vw;
+    }
   }
+
   a {
     color: $orange;
     border-color: $orange;
@@ -325,7 +340,7 @@ a:hover {
       @include media-breakpoint-up(md) {
         width: 40%;
       }
-      
+
       input {
         padding: 10px;
         text-align: center;
@@ -374,14 +389,16 @@ a:hover {
     margin: 0 20vw 40px 20vw;
     font-style: italic;
   }
+
   .standard-link {
     margin-bottom: 20px;
   }
+
   .favorites {
     margin-top: 40px;
     width: 100%;
     display: flex;
-    flex-flow: row  nowrap;
+    flex-flow: row nowrap;
     justify-content: center;
 
     div {
@@ -390,7 +407,7 @@ a:hover {
       flex-flow: column nowrap;
       align-items: center;
       margin: 0 10px;
-      
+
       @include media-breakpoint-up(md) {
         margin: 0 20px;
       }
@@ -405,6 +422,7 @@ a:hover {
       width: 100px;
       height: 100px;
     }
+
     .ItemCard:hover {
       display: block;
     }
@@ -451,13 +469,15 @@ a:hover {
     }
 
     .filter-collapse {
-      
+
       @include media-breakpoint-up(md) {
         margin-left: 20vw;
       }
+git a
       @include media-breakpoint-up(lg) {
         margin-left: 40vw;
       }
+
       .filter-section {
         display: flex;
         flex-flow: row wrap;
@@ -485,8 +505,13 @@ a:hover {
 
 //--------------ItemCard--------------
 @keyframes fade {
-  from {opacity: 1}
-  to {opacity: 0.5}
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0.5
+  }
 }
 
 .ItemCard {
@@ -515,12 +540,17 @@ a:hover {
 
 //--------------ItemDetail--------------
 
-.react-calendar-heatmap .color-scale-undefined {fill: $red}
-.react-calendar-heatmap .color-empty {fill: $light}
+.react-calendar-heatmap .color-scale-undefined {
+  fill: $red
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: $light
+}
 
 .ItemDetail {
   text-align: left;
-  
+
   @include media-breakpoint-up(md) {
     display: flex;
     display: row nowrap;
@@ -543,6 +573,7 @@ a:hover {
       object-fit: cover;
     }
   }
+
   .info {
     margin: 20px 10vw 0 10vw;
 
@@ -558,25 +589,33 @@ a:hover {
         width: 100%;
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 28d4d9036a305d18d9af4e169e966e4d63ae606e
     .cost {
       margin-top: 10px;
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between;
     }
+
     .tags {
       padding: 10px 0;
       border-top: 5px solid $light;
       border-bottom: 5px solid $light;
     }
+
     .subtags {
       display: flex;
       flex-flow: row nowrap;
     }
   }
+
   .special-needs {
     margin-top: 10px;
   }
+
   .delete-wrap {
     display: flex;
     flex-flow: column nowrap;
@@ -729,6 +768,7 @@ a:hover {
       }
     }
   }
+
   .right {
     width: 100vw;
   }
@@ -774,7 +814,7 @@ a:hover {
           width: 12vw;
           height: 12vw;
         }
-    
+
         img {
           width: 100%;
           height: 100%;

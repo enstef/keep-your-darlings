@@ -17,7 +17,9 @@ class Start extends Component {
       return (
         <div className="Start onepage">
           <img className="logo" src={logo} alt="logo" />
-          <p className="welcome">We want to help you get organized and save money and stuff. Also we want to help you get organized and save money and stuff. Also we want to help you get organized and save money and stuff.</p>
+          <p className="welcome">
+            To all the fashionistas out there, now you can carry around your closet in your pocket and can plan your outfit for the night up front. You can see what outfit you wore on a specific date & how many times you have worn your favorite leather jacket!
+          </p>
           <Link className="standard-link" to="/signin">Start</Link>
         </div>
       );

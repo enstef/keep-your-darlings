@@ -7,7 +7,7 @@ class ItemCard extends Component {
     return (
 
       <div className="ItemCard" >
-        <Image cloudName="dbsepqxws" publicId={publicId}>
+        <Image cloudName="niconek" publicId={publicId}>
           <Transformation width="500" gravity="auto:0" crop="fill" effect="art:fes" />
         </Image>
       </ div >

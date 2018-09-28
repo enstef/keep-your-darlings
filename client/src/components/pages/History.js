@@ -32,7 +32,7 @@ class History extends Component {
                 const publicId = item.pictureUrl.substring(item.pictureUrl.indexOf("darling-pics/"))
                 return (
                   <div className="img-wrap" key={i}>
-                    <Image cloudName="dbsepqxws" publicId={publicId}>
+                    <Image cloudName="niconek" publicId={publicId}>
                       <Transformation width="300" gravity="auto:0" crop="fill" effect="art:fes" />
                     </Image>
                   </div>
