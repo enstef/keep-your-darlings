@@ -91,10 +91,10 @@ class Closet extends Component {
               <div className="filter-section">
                 <Dropdown direction="left" isOpen={this.state.btnDropleft} toggle={() => { this.setState({ btnDropleft: !this.state.btnDropleft }); }}>
                   <DropdownToggle className="butt special-needs-butt" caret>Brand</DropdownToggle>
-                  <DropdownMenu>
+                  <DropdownMenu className="brand-drop">
                     <button className="butt" name="brand" value="" onClick={e => this.handleOptionalClick(e, "")}>All</button>
                   {brands.map((brand, i) => (
-                      <button className="butt" name="brand" value={brand} onClick={e => this.handleOptionalClick(e, brand)} key={i}>{brand}</button>
+                      <button className={this.state.brand === brand ? "butt active" : "butt"} name="brand" value={brand} onClick={e => this.handleOptionalClick(e, brand)} key={i}>{brand}</button>
                     ))}
                   </DropdownMenu>
                 </Dropdown>

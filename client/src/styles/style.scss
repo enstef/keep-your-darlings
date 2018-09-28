@@ -472,6 +472,13 @@ a:hover {
         background-color: white;
         color: black;
       }
+      .brand-drop {
+        text-align: right;
+        min-width: 50vw !important;
+        padding: 0 !important;
+        border: none !important;
+        background-color: transparent;
+      }
     }
   }
 }
@@ -540,12 +547,17 @@ a:hover {
     margin: 20px 10vw 0 10vw;
 
     @include media-breakpoint-up(md) {
-      margin: 0 5vw;
+      margin: 0;
+      padding: 0 5vw;
+      width: 50vw;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      div {
+        width: 100%;
+      }
     }
-    
     .cost {
       margin-top: 10px;
       display: flex;

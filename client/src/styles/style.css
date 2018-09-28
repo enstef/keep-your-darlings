@@ -6662,6 +6662,12 @@ a:hover {
     border-radius: 0;
     background-color: white;
     color: black; }
+  .Closet form .filter-collapse .brand-drop {
+    text-align: right;
+    min-width: 50vw !important;
+    padding: 0 !important;
+    border: none !important;
+    background-color: transparent; }
 
 @keyframes fade {
   from {
@@ -6717,10 +6723,14 @@ a:hover {
     margin: 20px 10vw 0 10vw; }
     @media (min-width: 768px) {
       .ItemDetail .info {
-        margin: 0 5vw;
+        margin: 0;
+        padding: 0 5vw;
+        width: 50vw;
         display: flex;
         justify-content: center;
-        align-items: center; } }
+        align-items: center; }
+        .ItemDetail .info div {
+          width: 100%; } }
     .ItemDetail .info .cost {
       margin-top: 10px;
       display: flex;
