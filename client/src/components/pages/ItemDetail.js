@@ -67,14 +67,10 @@ class ItemDetail extends Component {
                 }}
               />
 
-<<<<<<< HEAD
             <div className="cost">
               {this.state.item.boughtOn ? <p>Bought on {moment(this.state.item.boughtOn).format("DD.MM.YYYY")} {this.state.item.price ? <span>for {this.state.item.price}€</span> : null}</p> : null}
-              {this.state.item.wornOn.lenght > 1 ? <p>Cost per wear: {Math.round(this.state.item.price / this.state.item.wornOn.length)}€</p> : null}
-=======
-              <div className="cost">
-                {this.state.item.boughtOn ? <p>Bought on {moment(this.state.item.boughtOn).format("DD.MM.YYYY")} {this.state.item.price ? <span>for {this.state.item.price}€</span> : null}</p> : null}
-                {this.state.item.price ? <p>Cost per wear: {Math.round(this.state.item.price / this.state.item.wornOn.length)}€</p> : null}
+              {this.state.item.wornOn.length > 0  ? <p>Cost per wear: {Math.round(this.state.item.price / this.state.item.wornOn.length)}€</p> : null}
+
               </div>
               {this.state.item.tags ? <p className="tags">{this.state.item.tags}</p> : null}
               <div className="subtags">
@@ -83,7 +79,6 @@ class ItemDetail extends Component {
                 <button className={"butt " + this.state.item.color}>{this.state.item.color}</button>
               </div>
               <button className="special-needs butt" onClick={this.initiateDelete}>Sort out…</button>
->>>>>>> 28d4d9036a305d18d9af4e169e966e4d63ae606e
             </div>
 
           </div>
