@@ -67,10 +67,10 @@ class ItemDetail extends Component {
                 }}
               />
 
+            <div className="cost">
+              {this.state.item.boughtOn ? <p>Bought on {moment(this.state.item.boughtOn).format("DD.MM.YYYY")} {this.state.item.price ? <span>for {this.state.item.price}€</span> : null}</p> : null}
+              {this.state.item.wornOn.length > 0  ? <p>Cost per wear: {Math.round(this.state.item.price / this.state.item.wornOn.length)}€</p> : null}
 
-              <div className="cost">
-                {this.state.item.boughtOn ? <p>Bought on {moment(this.state.item.boughtOn).format("DD.MM.YYYY")} {this.state.item.price ? <span>for {this.state.item.price}€</span> : null}</p> : null}
-                {this.state.item.wornOn.lenght > 1 ? <p>Cost per wear: {Math.round(this.state.item.price / this.state.item.wornOn.length)}€</p> : null}
               </div>
               {this.state.item.tags ? <p className="tags">{this.state.item.tags}</p> : null}
               <div className="subtags">
