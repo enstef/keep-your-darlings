@@ -5,6 +5,6 @@
 <hr>
 <p>Fullstack Project using MongoDB, Express.js, React.js, Node.js, Sass/CSS and HTML5.
 <hr>
-<p>Clone this poject, npm install, server on and off you go! Also this setup is ready to deploy to Heroku. Remember you will need the mlab extension.</p>
+<p>Clone this poject, npm install, configure the cloudinary settings, server on and off you go! Also this setup is ready to deploy to Heroku. Remember you will need the mlab extension.</p>
 <br>
 <h4>Preview: http://kyd.herokuapp.com/</h4>
