@@ -79,6 +79,7 @@ class ItemDetail extends Component {
                 <button className={"butt " + this.state.item.color}>{this.state.item.color}</button>
               </div>
               <button className="special-needs butt" onClick={this.initiateDelete}>Sort out…</button>
+
             </div>
 
           </div>

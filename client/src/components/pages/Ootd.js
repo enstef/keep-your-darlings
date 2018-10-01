@@ -77,8 +77,8 @@ class Ootd extends Component {
 
           <div className="left">
             <h1>OOTD</h1>
-            <p>What are you wearing today Darling? Keep track and try out new combinations from time to time.<br />
-              Life is to short to be boring, be daring instead!</p>
+            <p>What are you wearing today, Darling? Keep track and try out new combinations from time to time.<br />
+              Life is too short to be boring, be daring instead!</p>
             <p>Date<input type="date" value={this.state.wornOn} onChange={this.handleDate} /></p>
 
             <div className="outfit">
